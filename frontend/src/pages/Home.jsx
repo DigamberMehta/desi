@@ -20,6 +20,7 @@ import { useLang } from "../contexts/LangContext";
 import { Button } from "../components/ui/button";
 import { structuredData } from "../lib/seo";
 import * as LucideIcons from "lucide-react";
+import { apiUrl } from "../lib/api";
 
 const iconMap = {
   Fingerprint: LucideIcons.Fingerprint,
@@ -44,7 +45,7 @@ const Home = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch(apiUrl("/api/products"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -53,7 +54,7 @@ const Home = () => {
       })
       .catch((err) => console.error("Error fetching products:", err));
 
-    fetch("/api/settings")
+    fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data?.testimonials) {

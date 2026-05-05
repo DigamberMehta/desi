@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
+import { apiUrl } from "../../lib/api";
 
 const AdminLogin = ({ setToken }) => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const AdminLogin = ({ setToken }) => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/users/login", {
+      const res = await fetch(apiUrl("/api/users/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

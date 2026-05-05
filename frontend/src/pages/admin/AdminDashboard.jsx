@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Edit, Trash2, Plus } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { apiUrl } from "../../lib/api";
 
 const AdminDashboard = ({ token }) => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const AdminDashboard = ({ token }) => {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch("/api/products");
+      const res = await fetch(apiUrl("/api/products"));
       const data = await res.json();
       if (data.success) {
         setProducts(data.data);
@@ -31,7 +32,7 @@ const AdminDashboard = ({ token }) => {
       return;
 
     try {
-      const res = await fetch(`/api/products/${id}`, {
+      const res = await fetch(apiUrl(`/api/products/${id}`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -114,9 +115,7 @@ const AdminDashboard = ({ token }) => {
                   <td className="p-4 text-neutral-600 capitalize">
                     {p.category?.replace("-", " ")}
                   </td>
-                  <td className="p-4 text-neutral-600">
-                    AED {p.priceAED}
-                  </td>
+                  <td className="p-4 text-neutral-600">AED {p.priceAED}</td>
                   <td className="p-4">
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-semibold ${p.stock > 10 ? "bg-green-100 text-green-700" : "bg-orange-100 text-orange-700"}`}

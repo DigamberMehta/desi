@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLang } from "../contexts/LangContext";
 import { Button } from "./ui/button";
+import { apiUrl } from "../lib/api";
 
 const HeroBanner = () => {
   const { t } = useLang();
@@ -10,7 +11,7 @@ const HeroBanner = () => {
   const [heroSlides, setHeroSlides] = useState([]);
 
   useEffect(() => {
-    fetch("/api/settings")
+    fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data?.heroSlides) {

@@ -4,6 +4,7 @@ import { ChevronRight, SlidersHorizontal } from "lucide-react";
 import ProductCard from "../components/ProductCard";
 import SEOHead from "../components/SEOHead";
 import { useLang } from "../contexts/LangContext";
+import { apiUrl } from "../lib/api";
 
 const Catalog = ({ category }) => {
   const { t, lang } = useLang();
@@ -14,7 +15,7 @@ const Catalog = ({ category }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch(apiUrl("/api/products"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

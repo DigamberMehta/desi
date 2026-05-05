@@ -20,17 +20,12 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? ["https://desilocks.com", "https://www.desilocks.com"]
-        : ["http://localhost:5173", "http://localhost:3000"],
-    credentials: true,
+    origin: "*",
   }),
 );
 
 // MongoDB Connection
-const mongoURI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/desi-uae";
+const mongoURI = process.env.MONGODB_URI;
 
 mongoose
   .connect(mongoURI, {

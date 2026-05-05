@@ -14,6 +14,7 @@ import { useLang } from "../contexts/LangContext";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { useToast } from "../hooks/use-toast";
+import { apiUrl } from "../lib/api";
 
 const Cart = () => {
   const { t, formatAED } = useLang();
@@ -35,7 +36,7 @@ const Cart = () => {
   const [validatingCoupon, setValidatingCoupon] = useState(false);
 
   useEffect(() => {
-    fetch("/api/settings")
+    fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data?.whatsappNumber) {
@@ -53,7 +54,7 @@ const Cart = () => {
 
     setValidatingCoupon(true);
     try {
-      const res = await fetch("/api/coupons/validate", {
+      const res = await fetch(apiUrl("/api/coupons/validate"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code: couponCode }),

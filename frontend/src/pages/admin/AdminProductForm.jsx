@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import { ArrowLeft, Save } from "lucide-react";
+import { apiUrl } from "../../lib/api";
 
 const AdminProductForm = ({ token }) => {
   const { id } = useParams();
@@ -25,7 +26,7 @@ const AdminProductForm = ({ token }) => {
 
   useEffect(() => {
     if (isEdit) {
-      fetch(`/api/products/${id}`)
+      fetch(apiUrl(`/api/products/${id}`))
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
@@ -71,7 +72,9 @@ const AdminProductForm = ({ token }) => {
     e.preventDefault();
     setSaving(true);
 
-    const url = isEdit ? `/api/products/${id}` : "/api/products";
+    const url = isEdit
+      ? apiUrl(`/api/products/${id}`)
+      : apiUrl("/api/products");
     const method = isEdit ? "PUT" : "POST";
 
     let parsedHighlights = [];

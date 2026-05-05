@@ -30,6 +30,7 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion";
 import { useToast } from "../hooks/use-toast";
+import { apiUrl } from "../lib/api";
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -45,7 +46,7 @@ const ProductDetail = () => {
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
-    fetch(`/api/products/slug/${slug}`)
+    fetch(apiUrl(`/api/products/slug/${slug}`))
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -58,7 +59,7 @@ const ProductDetail = () => {
         setLoading(false);
       });
 
-    fetch("/api/settings")
+    fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data) {

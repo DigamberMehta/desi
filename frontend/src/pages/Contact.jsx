@@ -6,6 +6,7 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { useToast } from "../hooks/use-toast";
+import { apiUrl } from "../lib/api";
 
 const Contact = () => {
   const { t } = useLang();
@@ -19,7 +20,7 @@ const Contact = () => {
   const [whatsappNumber, setWhatsappNumber] = useState("+971 50 000 0000");
 
   useEffect(() => {
-    fetch("/api/settings")
+    fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data?.whatsappNumber) {

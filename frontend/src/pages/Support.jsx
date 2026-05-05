@@ -18,13 +18,14 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion";
 import { structuredData } from "../lib/seo";
+import { apiUrl } from "../lib/api";
 
 const Support = () => {
   const { t } = useLang();
   const [faqs, setFaqs] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("/api/settings")
+    fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data?.faqs) {

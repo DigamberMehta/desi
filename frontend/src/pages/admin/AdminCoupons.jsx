@@ -19,6 +19,7 @@ import {
   TableRow,
 } from "../../components/ui/table";
 import { Badge } from "../../components/ui/badge";
+import { apiUrl } from "../../lib/api";
 
 const AdminCoupons = ({ token }) => {
   const { toast } = useToast();
@@ -34,7 +35,7 @@ const AdminCoupons = ({ token }) => {
 
   const fetchCoupons = async () => {
     try {
-      const res = await fetch("/api/coupons", {
+      const res = await fetch(apiUrl("/api/coupons"), {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -58,7 +59,7 @@ const AdminCoupons = ({ token }) => {
 
     setSaving(true);
     try {
-      const res = await fetch("/api/coupons", {
+      const res = await fetch(apiUrl("/api/coupons"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +101,7 @@ const AdminCoupons = ({ token }) => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure?")) return;
     try {
-      const res = await fetch(`/api/coupons/${id}`, {
+      const res = await fetch(apiUrl(`/api/coupons/${id}`), {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

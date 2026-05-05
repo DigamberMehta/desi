@@ -4,6 +4,7 @@ import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { useToast } from "../../hooks/use-toast";
+import { apiUrl } from "../../lib/api";
 
 const AdminSettings = ({ token }) => {
   const { toast } = useToast();
@@ -17,7 +18,7 @@ const AdminSettings = ({ token }) => {
   });
 
   useEffect(() => {
-    fetch("/api/settings")
+    fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data) {
@@ -63,7 +64,7 @@ const AdminSettings = ({ token }) => {
     }
 
     try {
-      const res = await fetch("/api/settings", {
+      const res = await fetch(apiUrl("/api/settings"), {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

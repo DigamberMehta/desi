@@ -14,8 +14,8 @@ const HeroBanner = () => {
     fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && data.data?.heroSlides) {
-          setHeroSlides(data.data.heroSlides);
+        if (data.success && data.data?.bannerUrls) {
+          setHeroSlides(data.data.bannerUrls);
         }
       })
       .catch((err) => console.error("Error fetching slides:", err));
@@ -41,26 +41,16 @@ const HeroBanner = () => {
 
   return (
     <section className="relative h-[460px] md:h-[560px] lg:h-[620px] overflow-hidden bg-neutral-100">
-      {heroSlides.map((slide, i) => (
+      {heroSlides.map((url, i) => (
         <div
-          key={slide.id || i}
+          key={i}
           className={`absolute inset-0 transition-opacity duration-700 ${i === idx ? "opacity-100 p-0 m-0 w-full h-full block" : "opacity-0 pointer-events-none"}`}
         >
-          {slide.href ? (
-            <Link to={slide.href} className="w-full h-full block">
-              <img
-                src={slide.image}
-                alt=""
-                className="absolute inset-0 w-full h-full object-contain"
-              />
-            </Link>
-          ) : (
-            <img
-              src={slide.image}
-              alt=""
-              className="absolute inset-0 w-full h-full object-contain"
-            />
-          )}
+          <img
+            src={url}
+            alt=""
+            className="absolute inset-0 w-full h-full object-contain"
+          />
         </div>
       ))}
 

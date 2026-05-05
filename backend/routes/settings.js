@@ -28,8 +28,8 @@ router.put("/", protect, admin, async (req, res) => {
     if (req.body.whatsappNumber !== undefined) {
       settings.whatsappNumber = req.body.whatsappNumber;
     }
-    if (req.body.heroSlides !== undefined) {
-      settings.heroSlides = req.body.heroSlides;
+    if (req.body.bannerUrls !== undefined) {
+      settings.bannerUrls = req.body.bannerUrls;
     }
     if (req.body.faqs !== undefined) {
       settings.faqs = req.body.faqs;

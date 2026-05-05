@@ -6,8 +6,8 @@ const settingsSchema = new mongoose.Schema(
       type: String,
       default: "+971500000000",
     },
-    heroSlides: {
-      type: mongoose.Schema.Types.Mixed,
+    bannerUrls: {
+      type: [String],
       default: [],
     },
     faqs: {

@@ -101,6 +101,20 @@ const ProductDetail = () => {
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
 
+  // ── Hero banner computed vars ──────────────────────────────
+  const INSTALL_GIF =
+    "https://shop.desi.com.tr/Data/EditorFiles/rxgifmontajna.gif";
+  const heroImg =
+    product.category === "smart-locks" ? INSTALL_GIF : product.image;
+  const heroName = t(product.name).replace(/^DESi\s+/i, "");
+  const heroSeriesLabel =
+    {
+      "smart-locks": "Utopic Series",
+      accessories: "Utopic Accessories",
+      "alarm-security": "Alarm & Security",
+    }[product.category] || "DESi Series";
+  const heroNameParts = heroName.split(/(RX|QuiC)/g);
+
   const features = [
     { en: "AI face recognition (anti-spoofing)", ar: "تعرّف الوجه الذكي" },
     {
@@ -177,8 +191,8 @@ const ProductDetail = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Gallery */}
             <div className="flex flex-col gap-4">
-              <div className="relative aspect-square bg-gradient-to-b from-white to-neutral-50 rounded-3xl flex items-center justify-center p-12 border border-neutral-200/60 shadow-sm overflow-hidden group">
-                <div className="absolute inset-0 mix-blend-overlay opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-200 via-transparent to-transparent pointer-events-none"></div>
+              <div className="relative aspect-square bg-linear-to-b from-white to-neutral-50 rounded-3xl flex items-center justify-center p-12 border border-neutral-200/60 shadow-sm overflow-hidden group">
+                <div className="absolute inset-0 mix-blend-overlay opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-neutral-200 via-transparent to-transparent pointer-events-none"></div>
                 <img
                   src={gallery[active]}
                   alt={t(product.name)}
@@ -243,7 +257,7 @@ const ProductDetail = () => {
                 </span>
               </div>
 
-              <div className="w-full h-[1px] bg-neutral-200/60 my-6"></div>
+              <div className="w-full h-px bg-neutral-200/60 my-6"></div>
 
               {/* Color */}
               <div>
@@ -323,32 +337,103 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* ── QUICK FEATURES BAR ─────────────────────────── */}
-          {product.quickFeatures?.length > 0 && (
-            <div className="mt-16 border border-neutral-200/60 rounded-2xl overflow-hidden bg-white">
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-neutral-200/60">
-                {product.quickFeatures.map((f, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col items-center text-center p-7 gap-2.5"
-                  >
-                    <span className="text-3xl">{f.icon}</span>
-                    <p className="text-[11px] font-black uppercase tracking-[0.15em] text-neutral-900 leading-snug">
-                      {t(f.label)}
-                    </p>
-                    <p className="text-xs text-neutral-500 leading-relaxed">
-                      {t(f.sub)}
-                    </p>
+        {/* ── HERO BANNER ──────────────────────────────────── */}
+        <div className="px-4 md:px-8">
+          <div
+            className="bg-[#0e0e0e] rounded-2xl overflow-hidden"
+            style={{ height: "430px" }}
+          >
+            <div className="grid md:grid-cols-[55%_45%] h-full">
+              {/* Left */}
+              <div className="flex flex-col justify-center px-10 md:px-14 py-10 h-full">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="w-8 h-px bg-[#00a693] shrink-0"></span>
+                  <span className="text-[#00a693] text-[10px] font-bold uppercase tracking-[0.25em]">
+                    {heroSeriesLabel}
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-black text-white leading-none tracking-tight mb-5">
+                  {heroNameParts.map((part, i) =>
+                    /^(RX|QuiC)$/.test(part) ? (
+                      <span key={i} className="text-[#00a693]">
+                        {part}
+                      </span>
+                    ) : (
+                      <React.Fragment key={i}>{part}</React.Fragment>
+                    ),
+                  )}
+                </h2>
+                {product.description && t(product.description) && (
+                  <p className="text-neutral-400 text-[13px] leading-relaxed mb-6 max-w-sm">
+                    {t(product.description)}
+                  </p>
+                )}
+                {product.bullets?.en?.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {product.bullets.en.map((b, bi) => (
+                      <span
+                        key={bi}
+                        className="text-[12px] px-3 py-1.5 border border-[#00a693]/60 text-[#00a693] font-medium rounded"
+                      >
+                        {b}
+                      </span>
+                    ))}
                   </div>
-                ))}
+                )}
+              </div>
+              {/* Right: installation gif / hero image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={heroImg}
+                  alt={t(product.name)}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
             </div>
-          )}
+          </div>
+        </div>
 
+        {/* ── QUICK FEATURES BAR ──────────────────────────── */}
+        {product.quickFeatures?.length > 0 && (
+          <div className="px-4 md:px-8 mt-4">
+            <div className="bg-[#141414] rounded-2xl overflow-hidden">
+              <div className="max-w-7xl mx-auto">
+                <div
+                  className="grid divide-x divide-white/10"
+                  style={{
+                    gridTemplateColumns: `repeat(${product.quickFeatures.length}, 1fr)`,
+                  }}
+                >
+                  {product.quickFeatures.map((feat, fi) => (
+                    <div
+                      key={fi}
+                      className="flex flex-col items-center text-center px-6 py-10"
+                    >
+                      <span className="text-4xl mb-4 leading-none">
+                        {feat.icon}
+                      </span>
+                      <p className="text-[11px] font-black uppercase tracking-[0.18em] text-white mb-2">
+                        {t(feat.label)}
+                      </p>
+                      {feat.sub && (
+                        <p className="text-xs text-neutral-500 leading-relaxed max-w-45">
+                          {t(feat.sub)}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="max-w-7xl mx-auto px-4">
           {/* ── ANNOUNCEMENT BAR ────────────────────────────── */}
           {product.announcementBar && (
-            <div className="mt-4 bg-[#E60012] text-white py-3 px-5 rounded-xl text-sm font-medium text-center leading-relaxed">
+            <div className="mt-8 bg-[#E60012] text-white py-3 px-5 rounded-xl text-sm font-medium text-center leading-relaxed">
               🔴 {t(product.announcementBar)}
             </div>
           )}
@@ -523,7 +608,7 @@ const ProductDetail = () => {
                           key={i}
                           className="flex items-start gap-4 p-5 bg-neutral-50/80 rounded-2xl border border-neutral-100 hover:border-[#E60012]/20 hover:bg-red-50/30 transition-colors"
                         >
-                          <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 border border-neutral-200/50">
+                          <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-neutral-200/50">
                             <Check className="w-4 h-4 text-[#E60012]" />
                           </div>
                           <span className="font-medium text-neutral-700 leading-relaxed">
@@ -635,7 +720,7 @@ const ProductDetail = () => {
                           key={i}
                           className="p-6 bg-neutral-50/80 rounded-2xl border border-neutral-100 text-center hover:shadow-md transition-shadow"
                         >
-                          <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-red-50 to-[#E60012]/10 flex items-center justify-center mb-4 border border-[#E60012]/10">
+                          <div className="w-14 h-14 mx-auto rounded-full bg-linear-to-br from-red-50 to-[#E60012]/10 flex items-center justify-center mb-4 border border-[#E60012]/10">
                             <Check className="w-6 h-6 text-[#E60012]" />
                           </div>
                           <p className="text-[15px] font-bold text-neutral-800 leading-snug">

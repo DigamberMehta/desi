@@ -25,10 +25,6 @@ const Header = () => {
 
   const nav = [
     { to: "/smart-locks", label: { en: "Smart Locks", ar: "الأقفال الذكية" } },
-    {
-      to: "/alarm-security",
-      label: { en: "Alarm & Security", ar: "إنذار وأمان" },
-    },
     { to: "/accessories", label: { en: "Accessories", ar: "الملحقات" } },
   ];
 

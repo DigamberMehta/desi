@@ -94,10 +94,18 @@ const Home = () => {
       .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
-  const featured = products.slice(0, 4);
+  const smartLocks = products
+    .filter((p) => p.category === "smart-locks")
+    .slice(0, 4);
+  const accessories = products
+    .filter(
+      (p) => p.category === "accessories" || p.category === "alarm-security",
+    )
+    .slice(0, 4);
+
   const featureHighlights =
-    featured.length > 0 && featured[0].featureHighlights
-      ? featured[0].featureHighlights
+    smartLocks.length > 0 && smartLocks[0].featureHighlights
+      ? smartLocks[0].featureHighlights
       : [];
 
   return (
@@ -155,7 +163,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Featured products */}
+        {/* Featured products - Smart Locks */}
         <section className="bg-neutral-50/50">
           <div className="max-w-7xl mx-auto px-4 py-24">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -181,13 +189,51 @@ const Home = () => {
                 <ArrowRight className="w-4 h-4 rtl:rotate-180" />
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {featured.map((p) => (
-                <ProductCard key={p.slug} product={p} />
-              ))}
-            </div>
+            {smartLocks.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {smartLocks.map((p) => (
+                  <ProductCard key={p.slug} product={p} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-neutral-500">
+                {t({
+                  en: "No products found.",
+                  ar: "لم يتم العثور على منتجات.",
+                })}
+              </p>
+            )}
           </div>
         </section>
+
+        {/* Featured products - Accessories */}
+        {accessories.length > 0 && (
+          <section className="bg-white">
+            <div className="max-w-7xl mx-auto px-4 pb-24 pt-12">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div className="max-w-2xl">
+                  <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
+                    {t({ en: "Expand & Enhance", ar: "توسيع وتحسين" })}
+                  </p>
+                  <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight">
+                    {t({ en: "Accessories", ar: "الملحقات" })}
+                  </h2>
+                  <p className="mt-4 text-neutral-500 text-lg leading-relaxed">
+                    {t({
+                      en: "Take your smart lock experience to the next level with our premium accessories.",
+                      ar: "ارتقِ بتجربة القفل الذكي الخاص بك إلى المستوى التالي مع ملحقاتنا المتميزة.",
+                    })}
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {accessories.map((p) => (
+                  <ProductCard key={p.slug} product={p} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Big feature — face recognition */}
         <section className="bg-neutral-950 text-white overflow-hidden relative">

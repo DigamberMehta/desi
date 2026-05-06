@@ -211,10 +211,10 @@ const ProductDetail = () => {
                   NEW / جديد
                 </span>
               )}
-              <h1 className="text-4xl md:text-5xl font-black leading-[1.1] tracking-tight text-neutral-900">
+              <h2 className="text-3xl md:text-4xl font-black leading-[1.1] tracking-tight text-neutral-900">
                 {t(product.name)}
-              </h1>
-              <div className="mt-4 flex items-center gap-4">
+              </h2>
+              <div className="mt-3 flex items-center gap-3">
                 <div className="flex items-center gap-1 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-100">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star
@@ -231,39 +231,19 @@ const ProductDetail = () => {
                 </span>
               </div>
 
-              <div className="mt-8 flex items-baseline gap-4">
-                <span className="text-5xl font-black text-neutral-900 tracking-tighter">
+              <div className="mt-6 flex items-baseline gap-3">
+                <span className="text-4xl font-black text-neutral-900 tracking-tighter">
                   {formatAED(product.priceAED)}
                 </span>
-                <span className="text-xl text-neutral-400 line-through font-medium">
+                <span className="text-lg text-neutral-400 line-through font-medium">
                   {formatAED(Math.round(product.priceAED * 1.18))}
                 </span>
-                <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full uppercase tracking-wide">
+                <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-wide border border-emerald-100">
                   {t({ en: "Save 15%", ar: "وفّر 15%" })}
                 </span>
               </div>
-              <p className="mt-3 text-xs font-medium text-neutral-500 bg-neutral-100/80 inline-flex px-3 py-1.5 rounded-lg w-fit">
-                {t({
-                  en: "Inclusive of VAT • Free UAE delivery over AED 500",
-                  ar: "شامل ضريبة القيمة المضافة • توصيل مجاني داخل الإمارات للطلبيات 500 د.إ+",
-                })}
-              </p>
 
-              <ul className="mt-8 space-y-3">
-                {t(product.bullets).map((b, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-neutral-600 font-medium"
-                  >
-                    <div className="w-5 h-5 rounded-full bg-[#E60012]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-[#E60012]" />
-                    </div>
-                    <span className="leading-relaxed">{b}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="w-full h-[1px] bg-neutral-200/60 my-8"></div>
+              <div className="w-full h-[1px] bg-neutral-200/60 my-6"></div>
 
               {/* Color */}
               <div>
@@ -294,245 +274,497 @@ const ProductDetail = () => {
               </div>
 
               {/* Action Bar */}
-              <div className="mt-10 flex items-center gap-4 bg-white p-3 rounded-2xl border border-neutral-200/60 shadow-sm">
-                <div className="flex items-center bg-neutral-50 rounded-xl h-14 border border-neutral-200/80">
-                  <button
-                    onClick={() => setQty((q) => Math.max(1, q - 1))}
-                    className="w-12 h-full hover:bg-neutral-100 rounded-l-xl transition-colors"
+              <div className="mt-6 space-y-3">
+                {/* Qty + Add to Cart row */}
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center bg-white rounded-lg h-10 border border-neutral-200 shadow-sm shrink-0">
+                    <button
+                      onClick={() => setQty((q) => Math.max(1, q - 1))}
+                      className="w-9 h-full hover:bg-neutral-50 rounded-l-lg transition-colors flex items-center justify-center"
+                    >
+                      <Minus className="w-3.5 h-3.5 text-neutral-500" />
+                    </button>
+                    <span className="w-8 text-center font-bold text-sm text-neutral-900">
+                      {qty}
+                    </span>
+                    <button
+                      onClick={() => setQty((q) => q + 1)}
+                      className="w-9 h-full hover:bg-neutral-50 rounded-r-lg transition-colors flex items-center justify-center"
+                    >
+                      <Plus className="w-3.5 h-3.5 text-neutral-500" />
+                    </button>
+                  </div>
+                  <Button
+                    onClick={onAdd}
+                    className="flex-1 h-10 bg-[#E60012] hover:bg-[#c4000f] text-white font-bold text-sm rounded-lg shadow-sm shadow-red-900/10 transition-all hover:-translate-y-0.5 tracking-wide"
                   >
-                    <Minus className="w-4 h-4 mx-auto text-neutral-600" />
-                  </button>
-                  <span className="w-12 text-center font-bold text-lg">
-                    {qty}
-                  </span>
-                  <button
-                    onClick={() => setQty((q) => q + 1)}
-                    className="w-12 h-full hover:bg-neutral-100 rounded-r-xl transition-colors"
+                    <ShoppingCart className="w-4 h-4 me-2" />
+                    {t({ en: "Add to Cart", ar: "أضف إلى السلة" })}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-10 w-10 rounded-lg border-neutral-200 hover:border-[#E60012] hover:text-[#E60012] hover:bg-red-50 transition-colors shadow-sm shrink-0"
                   >
-                    <Plus className="w-4 h-4 mx-auto text-neutral-600" />
-                  </button>
+                    <Heart className="w-4 h-4" />
+                  </Button>
                 </div>
-                <Button
-                  onClick={onAdd}
-                  className="flex-1 h-14 bg-[#E60012] hover:bg-[#c4000f] text-white font-bold uppercase tracking-widest text-sm rounded-xl shadow-lg shadow-red-900/20 transition-all hover:-translate-y-0.5"
-                >
-                  <ShoppingCart className="w-5 h-5 me-2.5" />{" "}
-                  {t({ en: "Add to Cart", ar: "أضف إلى السلة" })}
-                </Button>
+                {/* Buy Now full width */}
                 <Button
                   onClick={onBuyNow}
                   variant="outline"
-                  className="flex-1 h-14 border-[#E60012] text-[#E60012] hover:bg-[#E60012] hover:text-white font-bold uppercase tracking-widest text-sm rounded-xl transition-all hover:-translate-y-0.5"
+                  className="w-full h-10 border-[#E60012] text-[#E60012] hover:bg-[#E60012] hover:text-white font-bold text-sm rounded-lg transition-all hover:-translate-y-0.5 tracking-wide"
                 >
-                  {t({ en: "Buy Now", ar: "اشترِ الآن" })}
+                  {t({
+                    en: "Buy Now via WhatsApp",
+                    ar: "اشترِ الآن عبر واتساب",
+                  })}
                 </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-14 w-14 rounded-xl border-neutral-200/80 hover:border-[#E60012] hover:text-[#E60012] hover:bg-red-50 transition-colors shadow-sm"
-                >
-                  <Heart className="w-5 h-5" />
-                </Button>
-              </div>
-
-              <div className="mt-8 grid grid-cols-3 gap-4 text-xs font-medium text-neutral-600">
-                <div className="p-4 bg-white border border-neutral-200/60 rounded-2xl flex flex-col items-center text-center gap-2.5 shadow-sm hover:border-[#E60012]/30 transition-colors">
-                  <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
-                    <Truck className="w-5 h-5 text-[#E60012]" />
-                  </div>
-                  {t({ en: "Free Delivery", ar: "توصيل مجاني" })}
-                </div>
-                <div className="p-4 bg-white border border-neutral-200/60 rounded-2xl flex flex-col items-center text-center gap-2.5 shadow-sm hover:border-[#E60012]/30 transition-colors">
-                  <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
-                    <ShieldCheck className="w-5 h-5 text-[#E60012]" />
-                  </div>
-                  {t({ en: "2-Year Warranty", ar: "ضمان سنتين" })}
-                </div>
-                <div className="p-4 bg-white border border-neutral-200/60 rounded-2xl flex flex-col items-center text-center gap-2.5 shadow-sm hover:border-[#E60012]/30 transition-colors">
-                  <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
-                    <RotateCcw className="w-5 h-5 text-[#E60012]" />
-                  </div>
-                  {t({ en: "7-Day Returns", ar: "WPإرجاع خلال 7 أيام" })}
-                </div>
               </div>
             </div>
           </div>
 
-          {/* Tabs */}
-          <div className="mt-20 bg-white rounded-3xl border border-neutral-200/60 shadow-sm p-4 md:p-8">
-            <Tabs defaultValue="features" className="w-full">
-              <TabsList className="bg-neutral-100/80 p-1.5 rounded-2xl w-full md:w-auto inline-flex overflow-x-auto overflow-y-hidden">
-                <TabsTrigger
-                  value="features"
-                  className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
-                >
-                  {t({ en: "Features", ar: "المميزات" })}
-                </TabsTrigger>
-                <TabsTrigger
-                  value="specs"
-                  className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
-                >
-                  {t({ en: "Specifications", ar: "المواصفات" })}
-                </TabsTrigger>
-                <TabsTrigger
-                  value="box"
-                  className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
-                >
-                  {t({ en: "In the box", ar: "محتويات العلبة" })}
-                </TabsTrigger>
-                <TabsTrigger
-                  value="faq"
-                  className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
-                >
-                  FAQ
-                </TabsTrigger>
-              </TabsList>
-
-              <div className="mt-8 px-2">
-                <TabsContent
-                  value="features"
-                  className="py-2 focus-visible:outline-none"
-                >
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    {features.map((f, i) => (
-                      <div
-                        key={i}
-                        className="flex items-start gap-4 p-5 bg-neutral-50/80 rounded-2xl border border-neutral-100 hover:border-[#E60012]/20 hover:bg-red-50/30 transition-colors"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 border border-neutral-200/50">
-                          <Check className="w-4 h-4 text-[#E60012]" />
-                        </div>
-                        <span className="font-medium text-neutral-700 leading-relaxed">
-                          {t(f)}
-                        </span>
-                      </div>
-                    ))}
+          {/* ── QUICK FEATURES BAR ─────────────────────────── */}
+          {product.quickFeatures?.length > 0 && (
+            <div className="mt-16 border border-neutral-200/60 rounded-2xl overflow-hidden bg-white">
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-neutral-200/60">
+                {product.quickFeatures.map((f, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center text-center p-7 gap-2.5"
+                  >
+                    <span className="text-3xl">{f.icon}</span>
+                    <p className="text-[11px] font-black uppercase tracking-[0.15em] text-neutral-900 leading-snug">
+                      {t(f.label)}
+                    </p>
+                    <p className="text-xs text-neutral-500 leading-relaxed">
+                      {t(f.sub)}
+                    </p>
                   </div>
-                </TabsContent>
-                <TabsContent
-                  value="specs"
-                  className="py-2 focus-visible:outline-none"
-                >
-                  <div className="overflow-hidden rounded-2xl border border-neutral-200/60">
-                    <table className="w-full text-sm">
-                      <tbody>
-                        {[
-                          {
-                            key: "compatibility",
-                            label: { en: "Compatibility", ar: "التوافق" },
-                          },
-                          {
-                            key: "cylinderType",
-                            label: { en: "Cylinder type", ar: "نوع الأسطوانة" },
-                          },
-                          {
-                            key: "battery",
-                            label: { en: "Battery", ar: "البطارية" },
-                          },
-                          {
-                            key: "batteryLife",
-                            label: { en: "Battery life", ar: "عمر البطارية" },
-                          },
-                          {
-                            key: "connectivity",
-                            label: { en: "Connectivity", ar: "الاتصال" },
-                          },
-                          {
-                            key: "encryption",
-                            label: { en: "Encryption", ar: "التشفير" },
-                          },
-                          {
-                            key: "voiceControl",
-                            label: { en: "Voice control", ar: "التحكم الصوتي" },
-                          },
-                          {
-                            key: "operatingTemperature",
-                            label: {
-                              en: "Operating temperature",
-                              ar: "درجة حرارة التشغيل",
-                            },
-                          },
-                        ]
-                          .filter((item) => product.specifications?.[item.key])
-                          .map((item, i) => (
-                            <tr
-                              key={i}
-                              className="border-b border-neutral-100 last:border-0 hover:bg-neutral-50/50 transition-colors"
-                            >
-                              <td className="py-4 px-6 font-bold text-neutral-900 w-1/3 bg-neutral-50/30">
-                                {t(item.label)}
-                              </td>
-                              <td className="py-4 px-6 text-neutral-600 font-medium">
-                                {product.specifications[item.key]}
-                              </td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </TabsContent>
-                <TabsContent
-                  value="box"
-                  className="py-2 focus-visible:outline-none"
-                >
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-                    {(product.inTheBox && product.inTheBox.length > 0
-                      ? product.inTheBox.map((item) => ({ en: item, ar: item }))
-                      : [
-                          { en: "Utopic RX Smart Lock", ar: "القفل الذكي" },
-                          { en: "Type-C USB Cable", ar: "كابل USB Type-C" },
-                          { en: "2 × Allen Wrenches", ar: "WP2 مفتاح ألن" },
-                          { en: "Door Surface Adhesive", ar: "لاصق سطح الباب" },
-                          {
-                            en: "Plastic Adapter for Key",
-                            ar: "محوّل بلاستيكي للمفتاح",
-                          },
-                          {
-                            en: "Plastic Adapter for Thumbturn",
-                            ar: "محوّل للمقبض",
-                          },
-                        ]
-                    ).map((item, i) => (
-                      <div
-                        key={i}
-                        className="p-6 bg-neutral-50/80 rounded-2xl border border-neutral-100 text-center hover:shadow-md transition-shadow"
-                      >
-                        <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-red-50 to-[#E60012]/10 flex items-center justify-center mb-4 border border-[#E60012]/10">
-                          <Check className="w-6 h-6 text-[#E60012]" />
-                        </div>
-                        <p className="text-[15px] font-bold text-neutral-800 leading-snug">
-                          {t(item)}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </TabsContent>
-                <TabsContent
-                  value="faq"
-                  className="py-2 focus-visible:outline-none"
-                >
-                  <div className="bg-neutral-50/50 rounded-2xl border border-neutral-200/60 p-2 md:p-6">
-                    <Accordion type="single" collapsible className="w-full">
-                      {faqs.map((f, i) => (
-                        <AccordionItem
-                          key={i}
-                          value={`q${i}`}
-                          className="border-neutral-200/60 px-4 md:px-0"
-                        >
-                          <AccordionTrigger className="text-start font-bold text-base py-5 hover:text-[#E60012] transition-colors">
-                            {t(f.q)}
-                          </AccordionTrigger>
-                          <AccordionContent className="text-neutral-600 font-medium leading-relaxed pb-6 text-base">
-                            {t(f.a)}
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
-                  </div>
-                </TabsContent>
+                ))}
               </div>
-            </Tabs>
-          </div>
+            </div>
+          )}
+
+          {/* ── ANNOUNCEMENT BAR ────────────────────────────── */}
+          {product.announcementBar && (
+            <div className="mt-4 bg-[#E60012] text-white py-3 px-5 rounded-xl text-sm font-medium text-center leading-relaxed">
+              🔴 {t(product.announcementBar)}
+            </div>
+          )}
+
+          {/* ── RICH CONTENT SECTIONS ───────────────────────── */}
+          {product.contentSections?.length > 0 ? (
+            <div className="mt-16">
+              {product.contentSections.map((section, idx) => {
+                if (
+                  section.type === "banner" ||
+                  section.type === "dark-banner"
+                ) {
+                  return (
+                    <div key={idx} className="border-t border-neutral-100 py-6">
+                      <img
+                        src={section.image}
+                        alt=""
+                        className="w-full rounded-2xl"
+                        loading="lazy"
+                      />
+                    </div>
+                  );
+                }
+
+                if (section.type === "text-banner") {
+                  return (
+                    <div
+                      key={idx}
+                      className="border-t border-neutral-100 py-16"
+                    >
+                      <div className="max-w-3xl mb-10">
+                        {section.tag && (
+                          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#00a693] mb-3">
+                            — {t(section.tag)}
+                          </p>
+                        )}
+                        {section.heading && (
+                          <h2 className="text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-neutral-900 mb-5">
+                            {t(section.heading)}
+                          </h2>
+                        )}
+                        {section.text && (
+                          <p className="text-neutral-600 leading-relaxed">
+                            {t(section.text)}
+                          </p>
+                        )}
+                        {section.note && (
+                          <p className="text-xs italic text-neutral-400 mt-3">
+                            {t(section.note)}
+                          </p>
+                        )}
+                      </div>
+                      {section.image && (
+                        <img
+                          src={section.image}
+                          alt={t(section.heading) || ""}
+                          className="w-full rounded-2xl"
+                          loading="lazy"
+                        />
+                      )}
+                    </div>
+                  );
+                }
+
+                // text-image or image-text
+                const textBlock = (
+                  <div className="flex flex-col justify-center">
+                    {section.tag && (
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#00a693] mb-3">
+                        — {t(section.tag)}
+                      </p>
+                    )}
+                    {section.heading && (
+                      <h2 className="text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-neutral-900 mb-5">
+                        {t(section.heading)}
+                      </h2>
+                    )}
+                    {section.text && (
+                      <p className="text-neutral-600 leading-relaxed">
+                        {t(section.text)}
+                      </p>
+                    )}
+                    {section.bullets?.length > 0 && (
+                      <ul className="mt-4 space-y-2.5">
+                        {section.bullets.map((b, j) => (
+                          <li
+                            key={j}
+                            className="flex items-start gap-2.5 text-neutral-600"
+                          >
+                            <Check className="w-4 h-4 text-[#00a693] shrink-0 mt-0.5" />
+                            <span>{t(b)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {section.note && (
+                      <p className="text-xs italic text-neutral-400 mt-4">
+                        {t(section.note)}
+                      </p>
+                    )}
+                  </div>
+                );
+
+                const imageBlock = (
+                  <div className="flex items-center justify-center">
+                    <img
+                      src={section.image}
+                      alt={t(section.heading) || ""}
+                      className="w-full max-w-lg rounded-2xl"
+                      loading="lazy"
+                    />
+                  </div>
+                );
+
+                return (
+                  <div key={idx} className="border-t border-neutral-100 py-16">
+                    <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                      {section.type === "text-image" ? (
+                        <>
+                          {textBlock}
+                          {imageBlock}
+                        </>
+                      ) : (
+                        <>
+                          {imageBlock}
+                          {textBlock}
+                        </>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            /* ── FALLBACK TABS (no contentSections) ─────────── */
+            <div className="mt-20 bg-white rounded-3xl border border-neutral-200/60 shadow-sm p-4 md:p-8">
+              <Tabs defaultValue="features" className="w-full">
+                <TabsList className="bg-neutral-100/80 p-1.5 rounded-2xl w-full md:w-auto inline-flex overflow-x-auto overflow-y-hidden">
+                  <TabsTrigger
+                    value="features"
+                    className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
+                  >
+                    {t({ en: "Features", ar: "المميزات" })}
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="specs"
+                    className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
+                  >
+                    {t({ en: "Specifications", ar: "المواصفات" })}
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="box"
+                    className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
+                  >
+                    {t({ en: "In the box", ar: "محتويات العلبة" })}
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="faq"
+                    className="rounded-xl px-6 py-2.5 font-bold data-[state=active]:bg-white data-[state=active]:text-[#E60012] data-[state=active]:shadow-sm transition-all"
+                  >
+                    FAQ
+                  </TabsTrigger>
+                </TabsList>
+                <div className="mt-8 px-2">
+                  <TabsContent
+                    value="features"
+                    className="py-2 focus-visible:outline-none"
+                  >
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {features.map((f, i) => (
+                        <div
+                          key={i}
+                          className="flex items-start gap-4 p-5 bg-neutral-50/80 rounded-2xl border border-neutral-100 hover:border-[#E60012]/20 hover:bg-red-50/30 transition-colors"
+                        >
+                          <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 border border-neutral-200/50">
+                            <Check className="w-4 h-4 text-[#E60012]" />
+                          </div>
+                          <span className="font-medium text-neutral-700 leading-relaxed">
+                            {t(f)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                  <TabsContent
+                    value="specs"
+                    className="py-2 focus-visible:outline-none"
+                  >
+                    <div className="overflow-hidden rounded-2xl border border-neutral-200/60">
+                      <table className="w-full text-sm">
+                        <tbody>
+                          {[
+                            {
+                              key: "compatibility",
+                              label: { en: "Compatibility", ar: "التوافق" },
+                            },
+                            {
+                              key: "cylinderType",
+                              label: {
+                                en: "Cylinder type",
+                                ar: "نوع الأسطوانة",
+                              },
+                            },
+                            {
+                              key: "battery",
+                              label: { en: "Battery", ar: "البطارية" },
+                            },
+                            {
+                              key: "batteryLife",
+                              label: { en: "Battery life", ar: "عمر البطارية" },
+                            },
+                            {
+                              key: "connectivity",
+                              label: { en: "Connectivity", ar: "الاتصال" },
+                            },
+                            {
+                              key: "encryption",
+                              label: { en: "Encryption", ar: "التشفير" },
+                            },
+                            {
+                              key: "voiceControl",
+                              label: {
+                                en: "Voice control",
+                                ar: "التحكم الصوتي",
+                              },
+                            },
+                            {
+                              key: "operatingTemperature",
+                              label: {
+                                en: "Operating temperature",
+                                ar: "درجة حرارة التشغيل",
+                              },
+                            },
+                          ]
+                            .filter(
+                              (item) => product.specifications?.[item.key],
+                            )
+                            .map((item, i) => (
+                              <tr
+                                key={i}
+                                className="border-b border-neutral-100 last:border-0 hover:bg-neutral-50/50 transition-colors"
+                              >
+                                <td className="py-4 px-6 font-bold text-neutral-900 w-1/3 bg-neutral-50/30">
+                                  {t(item.label)}
+                                </td>
+                                <td className="py-4 px-6 text-neutral-600 font-medium">
+                                  {product.specifications[item.key]}
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </TabsContent>
+                  <TabsContent
+                    value="box"
+                    className="py-2 focus-visible:outline-none"
+                  >
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                      {(product.inTheBox?.length > 0
+                        ? product.inTheBox.map((item) => ({
+                            en: item,
+                            ar: item,
+                          }))
+                        : [
+                            { en: "Utopic RX Smart Lock", ar: "القفل الذكي" },
+                            { en: "Type-C USB Cable", ar: "كابل USB Type-C" },
+                            { en: "2 × Allen Wrenches", ar: "مفتاح ألن ×2" },
+                            {
+                              en: "Door Surface Adhesive",
+                              ar: "لاصق سطح الباب",
+                            },
+                            {
+                              en: "Plastic Adapter for Key",
+                              ar: "محوّل بلاستيكي للمفتاح",
+                            },
+                            {
+                              en: "Plastic Adapter for Thumbturn",
+                              ar: "محوّل للمقبض",
+                            },
+                          ]
+                      ).map((item, i) => (
+                        <div
+                          key={i}
+                          className="p-6 bg-neutral-50/80 rounded-2xl border border-neutral-100 text-center hover:shadow-md transition-shadow"
+                        >
+                          <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-red-50 to-[#E60012]/10 flex items-center justify-center mb-4 border border-[#E60012]/10">
+                            <Check className="w-6 h-6 text-[#E60012]" />
+                          </div>
+                          <p className="text-[15px] font-bold text-neutral-800 leading-snug">
+                            {t(item)}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                  <TabsContent
+                    value="faq"
+                    className="py-2 focus-visible:outline-none"
+                  >
+                    <div className="bg-neutral-50/50 rounded-2xl border border-neutral-200/60 p-2 md:p-6">
+                      <Accordion type="single" collapsible className="w-full">
+                        {faqs.map((f, i) => (
+                          <AccordionItem
+                            key={i}
+                            value={`q${i}`}
+                            className="border-neutral-200/60 px-4 md:px-0"
+                          >
+                            <AccordionTrigger className="text-start font-bold text-base py-5 hover:text-[#E60012] transition-colors">
+                              {t(f.q)}
+                            </AccordionTrigger>
+                            <AccordionContent className="text-neutral-600 font-medium leading-relaxed pb-6 text-base">
+                              {t(f.a)}
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    </div>
+                  </TabsContent>
+                </div>
+              </Tabs>
+            </div>
+          )}
+
+          {/* ── SPEC GROUPS GRID ─────────────────────────────── */}
+          {product.specGroups?.length > 0 && (
+            <div className="border-t border-neutral-100 py-16">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#00a693] mb-3">
+                — {t({ en: "TECHNICAL DETAILS", ar: "التفاصيل التقنية" })}
+              </p>
+              <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-neutral-900 mb-10">
+                {t(product.name)} {t({ en: "FEATURES", ar: "المميزات" })}
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {product.specGroups.map((group, i) => (
+                  <div
+                    key={i}
+                    className="border border-neutral-200/60 rounded-2xl p-6"
+                  >
+                    <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#00a693] mb-4">
+                      — {t(group.title)}
+                    </p>
+                    <ul className="space-y-2">
+                      {group.items.map((item, j) => (
+                        <li
+                          key={j}
+                          className="flex items-start gap-2 text-sm text-neutral-700"
+                        >
+                          <span className="text-[#00a693] mt-0.5 shrink-0">
+                            •
+                          </span>
+                          <span>{t(item)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── BOX CONTENTS ─────────────────────────────────── */}
+          {(product.boxContents?.length > 0 || product.inTheBox?.length > 0) &&
+            product.contentSections?.length > 0 && (
+              <div className="border-t border-neutral-100 py-16">
+                <h2 className="text-2xl font-black uppercase tracking-tight text-neutral-900 mb-8">
+                  {t({ en: "BOX CONTENTS", ar: "محتويات العلبة" })}
+                </h2>
+                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
+                  {(product.boxContents?.length > 0
+                    ? product.boxContents
+                    : product.inTheBox.map((item) => ({
+                        icon: "📦",
+                        name: { en: item, ar: item },
+                      }))
+                  ).map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-col items-center text-center gap-2.5 p-4 bg-neutral-50/80 border border-neutral-200/60 rounded-2xl hover:shadow-sm transition-shadow"
+                    >
+                      <span className="text-3xl">{item.icon}</span>
+                      <p className="text-xs font-medium text-neutral-700 leading-snug">
+                        {t(item.name)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+          {/* ── FAQ ──────────────────────────────────────────── */}
+          {faqs.length > 0 && (
+            <div className="border-t border-neutral-100 py-16">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-neutral-900 mb-8">
+                {t({ en: "Frequently Asked Questions", ar: "الأسئلة الشائعة" })}
+              </h2>
+              <div className="bg-neutral-50/50 rounded-2xl border border-neutral-200/60 p-2 md:p-6">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((f, i) => (
+                    <AccordionItem
+                      key={i}
+                      value={`q${i}`}
+                      className="border-neutral-200/60 px-4 md:px-0"
+                    >
+                      <AccordionTrigger className="text-start font-bold text-base py-5 hover:text-[#E60012] transition-colors">
+                        {t(f.q)}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-neutral-600 font-medium leading-relaxed pb-6 text-base">
+                        {t(f.a)}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
+          )}
         </div>
       </main>
     </>

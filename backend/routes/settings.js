@@ -31,12 +31,6 @@ router.put("/", protect, admin, async (req, res) => {
     if (req.body.bannerUrls !== undefined) {
       settings.bannerUrls = req.body.bannerUrls;
     }
-    if (req.body.faqs !== undefined) {
-      settings.faqs = req.body.faqs;
-    }
-    if (req.body.testimonials !== undefined) {
-      settings.testimonials = req.body.testimonials;
-    }
 
     await settings.save();
     res.json({

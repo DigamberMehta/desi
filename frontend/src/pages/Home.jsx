@@ -39,10 +39,49 @@ const iconMap = {
   MoveRight: LucideIcons.MoveRight,
 };
 
+const TESTIMONIALS = [
+  {
+    name: "Ahmed Al Mansouri",
+    city: { en: "Dubai Marina", ar: "دبي مارينا" },
+    text: {
+      en: "Installed in under 5 minutes. Face recognition is shockingly fast even at night.",
+      ar: "تم التركيب في أقل من 5 دقائق. التعرّف على الوجه سريع جداً حتى ليلاً.",
+    },
+    rating: 5,
+  },
+  {
+    name: "Fatima Khan",
+    city: { en: "Abu Dhabi", ar: "أبوظبي" },
+    text: {
+      en: "My kids forget keys daily. Now they just walk up. Best home upgrade we've made.",
+      ar: "كان أطفالي ينسون المفاتيح يومياً. الآن يدخلون بسهولة. أفضل ترقية للمنزل.",
+    },
+    rating: 5,
+  },
+  {
+    name: "James O'Brien",
+    city: { en: "Sharjah", ar: "الشارقة" },
+    text: {
+      en: "Airbnb host here — e-key sharing changed my workflow completely. No more lockboxes.",
+      ar: "كمضيف Airbnb — مشاركة المفاتيح الإلكترونية غيّرت عملي تماماً.",
+    },
+    rating: 5,
+  },
+  {
+    name: "Maryam Saleh",
+    city: { en: "Al Ain", ar: "العين" },
+    text: {
+      en: "No drilling needed. The 3M adhesive option saved my brand new fire door.",
+      ar: "لا حاجة للحفر. اللاصق 3M أنقذ باب الحريق الجديد.",
+    },
+    rating: 5,
+  },
+];
+
 const Home = () => {
   const { t } = useLang();
   const [products, setProducts] = useState([]);
-  const [testimonials, setTestimonials] = useState([]);
+  const testimonials = TESTIMONIALS;
 
   useEffect(() => {
     fetch(apiUrl("/api/products"))
@@ -53,15 +92,6 @@ const Home = () => {
         }
       })
       .catch((err) => console.error("Error fetching products:", err));
-
-    fetch(apiUrl("/api/settings"))
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success && data.data?.testimonials) {
-          setTestimonials(data.data.testimonials);
-        }
-      })
-      .catch((err) => console.error("Error fetching settings:", err));
   }, []);
 
   const featured = products.slice(0, 4);

@@ -18,22 +18,84 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion";
 import { structuredData } from "../lib/seo";
-import { apiUrl } from "../lib/api";
+
+const FAQS = [
+  {
+    q: {
+      en: "Can I still open the door with a key?",
+      ar: "هل يمكنني فتح الباب بالمفتاح؟",
+    },
+    a: {
+      en: "Yes — anytime. The patented design lets you access from outside even when a key is inside.",
+      ar: "نعم في أي وقت. يتيح التصميم المسجَّل الدخول من الخارج حتى لو كان المفتاح بالداخل.",
+    },
+  },
+  {
+    q: {
+      en: "Will my door be damaged during installation?",
+      ar: "هل سيتضرّر بابي عند التركيب؟",
+    },
+    a: {
+      en: "No. The lock mounts on the cylinder with screws or 3M adhesive — zero drilling.",
+      ar: "لا. يُركَّب على الأسطوانة ببراغي أو لاصق 3M — بدون أي حفر.",
+    },
+  },
+  {
+    q: {
+      en: "How long does installation take?",
+      ar: "كم تستغرق عملية التركيب؟",
+    },
+    a: {
+      en: "Typically 1–5 minutes. A user-friendly guide and all accessories are included.",
+      ar: "عادةً 1–5 دقائق. مرفق دليل سهل وجميع الملحقات.",
+    },
+  },
+  {
+    q: {
+      en: "Is it compatible with my UAE door?",
+      ar: "هل يتوافق مع بابي في الإمارات؟",
+    },
+    a: {
+      en: "If your door has a euro-profile cylinder lock and at least 2mm gap, yes — it fits.",
+      ar: "إذا كان بابك بأسطوانة أوروبية مع فجوة 2 مم على الأقل، فهو متوافق.",
+    },
+  },
+  {
+    q: {
+      en: "Can I share access with multiple users?",
+      ar: "هل يمكنني مشاركة الوصول مع عدة أشخاص؟",
+    },
+    a: {
+      en: "Yes — up to 37 users with individual time-based permissions via the DESi Smart app.",
+      ar: "نعم — حتى 37 مستخدماً بصلاحيات زمنية فردية عبر تطبيق DESi Smart.",
+    },
+  },
+  {
+    q: { en: "How long does the battery last?", ar: "كم تدوم البطارية؟" },
+    a: {
+      en: "Up to 6 months in eco mode. Charge via Type-C cable; battery status is shown in the app.",
+      ar: "حتى 6 أشهر في وضع التوفير. اشحنه بكابل Type-C ويظهر مستوى البطارية في التطبيق.",
+    },
+  },
+  {
+    q: { en: "Does it need internet?", ar: "هل يحتاج إلى إنترنت؟" },
+    a: {
+      en: "No — works via Bluetooth at close range. Add the WiFi Bridge for remote access.",
+      ar: "لا — يعمل عبر بلوتوث محلياً. أضف جسر WiFi للوصول عن بُعد.",
+    },
+  },
+  {
+    q: { en: "Is it secure against hacking?", ar: "هل هو آمن ضد الاختراق؟" },
+    a: {
+      en: "Yes. AES-256 GCM encryption with the latest security standards protect every operation.",
+      ar: "نعم. تشفير AES-256 GCM مع أحدث معايير الأمان يحمي كل عملية.",
+    },
+  },
+];
 
 const Support = () => {
   const { t } = useLang();
-  const [faqs, setFaqs] = React.useState([]);
-
-  React.useEffect(() => {
-    fetch(apiUrl("/api/settings"))
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success && data.data?.faqs) {
-          setFaqs(data.data.faqs);
-        }
-      })
-      .catch((err) => console.error("Error fetching faqs:", err));
-  }, []);
+  const faqs = FAQS;
 
   const cards = [
     {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Save, Phone, Plus, Trash2 } from "lucide-react";
+
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
@@ -13,8 +14,6 @@ const AdminSettings = ({ token }) => {
   const [formData, setFormData] = useState({
     whatsappNumber: "",
     bannerUrls: [""],
-    faqs: [],
-    testimonials: [],
   });
 
   useEffect(() => {
@@ -27,8 +26,6 @@ const AdminSettings = ({ token }) => {
             bannerUrls: data.data.bannerUrls?.length
               ? data.data.bannerUrls
               : [""],
-            faqs: data.data.faqs || [],
-            testimonials: data.data.testimonials || [],
           });
         }
         setLoading(false);
@@ -58,49 +55,6 @@ const AdminSettings = ({ token }) => {
     setFormData({ ...formData, bannerUrls: newUrls.length ? newUrls : [""] });
   };
 
-  const handleFaqChange = (index, field, value) => {
-    const newFaqs = [...formData.faqs];
-    newFaqs[index] = { ...newFaqs[index], [field]: value };
-    setFormData({ ...formData, faqs: newFaqs });
-  };
-
-  const addFaq = () => {
-    setFormData({
-      ...formData,
-      faqs: [...formData.faqs, { question: "", answer: "" }],
-    });
-  };
-
-  const removeFaq = (index) => {
-    setFormData({
-      ...formData,
-      faqs: formData.faqs.filter((_, i) => i !== index),
-    });
-  };
-
-  const handleTestimonialChange = (index, field, value) => {
-    const newTestimonials = [...formData.testimonials];
-    newTestimonials[index] = { ...newTestimonials[index], [field]: value };
-    setFormData({ ...formData, testimonials: newTestimonials });
-  };
-
-  const addTestimonial = () => {
-    setFormData({
-      ...formData,
-      testimonials: [
-        ...formData.testimonials,
-        { name: "", text: "", rating: 5 },
-      ],
-    });
-  };
-
-  const removeTestimonial = (index) => {
-    setFormData({
-      ...formData,
-      testimonials: formData.testimonials.filter((_, i) => i !== index),
-    });
-  };
-
   const handleSave = async (e) => {
     e.preventDefault();
     setSaving(true);
@@ -115,12 +69,6 @@ const AdminSettings = ({ token }) => {
         body: JSON.stringify({
           whatsappNumber: formData.whatsappNumber,
           bannerUrls: formData.bannerUrls.filter((url) => url.trim() !== ""),
-          faqs: formData.faqs.filter(
-            (faq) => faq.question.trim() !== "" || faq.answer.trim() !== "",
-          ),
-          testimonials: formData.testimonials.filter(
-            (t) => t.name.trim() !== "" || t.text.trim() !== "",
-          ),
         }),
       });
       const data = await res.json();
@@ -201,112 +149,6 @@ const AdminSettings = ({ token }) => {
                   variant="destructive"
                   size="icon"
                   onClick={() => removeBannerUrl(index)}
-                >
-                  <Trash2 className="w-4 h-4" />
-                </Button>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <Label className="text-base font-semibold">FAQs</Label>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={addFaq}
-              >
-                <Plus className="w-4 h-4 mr-2" /> Add FAQ
-              </Button>
-            </div>
-            {formData.faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="flex gap-2 items-start border p-3 rounded bg-neutral-50 relative"
-              >
-                <div className="flex-1 space-y-2">
-                  <Input
-                    placeholder="Question"
-                    value={faq.question}
-                    onChange={(e) =>
-                      handleFaqChange(index, "question", e.target.value)
-                    }
-                  />
-                  <Input
-                    placeholder="Answer"
-                    value={faq.answer}
-                    onChange={(e) =>
-                      handleFaqChange(index, "answer", e.target.value)
-                    }
-                  />
-                </div>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  className="text-red-500 hover:text-red-700 hover:bg-red-50"
-                  size="icon"
-                  onClick={() => removeFaq(index)}
-                >
-                  <Trash2 className="w-4 h-4" />
-                </Button>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <Label className="text-base font-semibold">Testimonials</Label>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={addTestimonial}
-              >
-                <Plus className="w-4 h-4 mr-2" /> Add Testimonial
-              </Button>
-            </div>
-            {formData.testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="flex gap-2 items-start border p-3 rounded bg-neutral-50 relative"
-              >
-                <div className="flex-1 space-y-2">
-                  <Input
-                    placeholder="Name"
-                    value={testimonial.name}
-                    onChange={(e) =>
-                      handleTestimonialChange(index, "name", e.target.value)
-                    }
-                  />
-                  <Input
-                    placeholder="Review text"
-                    value={testimonial.text}
-                    onChange={(e) =>
-                      handleTestimonialChange(index, "text", e.target.value)
-                    }
-                  />
-                  <Input
-                    type="number"
-                    min="1"
-                    max="5"
-                    placeholder="Rating (1-5)"
-                    value={testimonial.rating}
-                    onChange={(e) =>
-                      handleTestimonialChange(
-                        index,
-                        "rating",
-                        parseInt(e.target.value) || 5,
-                      )
-                    }
-                  />
-                </div>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  className="text-red-500 hover:text-red-700 hover:bg-red-50"
-                  size="icon"
-                  onClick={() => removeTestimonial(index)}
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>

@@ -10,14 +10,6 @@ const settingsSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
-    faqs: {
-      type: mongoose.Schema.Types.Mixed,
-      default: [],
-    },
-    testimonials: {
-      type: mongoose.Schema.Types.Mixed,
-      default: [],
-    },
   },
   { timestamps: true },
 );

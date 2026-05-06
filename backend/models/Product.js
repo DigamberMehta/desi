@@ -99,6 +99,49 @@ const productSchema = new mongoose.Schema(
         },
       },
     ],
+    quickFeatures: [
+      {
+        icon: String,
+        label: { en: String, ar: String },
+        sub: { en: String, ar: String },
+      },
+    ],
+    announcementBar: {
+      en: String,
+      ar: String,
+    },
+    contentSections: [
+      {
+        type: {
+          type: String,
+          enum: [
+            "text-image",
+            "image-text",
+            "text-banner",
+            "banner",
+            "dark-banner",
+          ],
+        },
+        tag: { en: String, ar: String },
+        heading: { en: String, ar: String },
+        text: { en: String, ar: String },
+        note: { en: String, ar: String },
+        image: String,
+        bullets: [{ en: String, ar: String }],
+      },
+    ],
+    specGroups: [
+      {
+        title: { en: String, ar: String },
+        items: [{ en: String, ar: String }],
+      },
+    ],
+    boxContents: [
+      {
+        icon: String,
+        name: { en: String, ar: String },
+      },
+    ],
   },
   {
     timestamps: true,

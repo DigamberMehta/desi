@@ -21,11 +21,17 @@ const AdminSettings = ({ token }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data) {
+          // Check for heroSlides first, fallback to bannerUrls, or default to empty
+          let defaultBanners = [""];
+          if (data.data.heroSlides && data.data.heroSlides.length > 0) {
+            defaultBanners = data.data.heroSlides.map((s) => s.image || s);
+          } else if (data.data.bannerUrls && data.data.bannerUrls.length > 0) {
+            defaultBanners = data.data.bannerUrls;
+          }
+
           setFormData({
             whatsappNumber: data.data.whatsappNumber || "",
-            bannerUrls: data.data.bannerUrls?.length
-              ? data.data.bannerUrls
-              : [""],
+            bannerUrls: defaultBanners,
           });
         }
         setLoading(false);

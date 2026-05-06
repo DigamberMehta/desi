@@ -30,6 +30,13 @@ router.put("/", protect, admin, async (req, res) => {
     }
     if (req.body.bannerUrls !== undefined) {
       settings.bannerUrls = req.body.bannerUrls;
+      // also override heroSlides so the app reflects the change immediately
+      // since the frontend prioritizes heroSlides over bannerUrls.
+      settings.heroSlides = req.body.bannerUrls.map((url, i) => ({
+        id: i + 1,
+        image: url,
+        href: "",
+      }));
     }
 
     await settings.save();

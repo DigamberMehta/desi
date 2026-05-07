@@ -40,6 +40,12 @@ mongoose
     process.exit(1);
   });
 
+// Serve uploaded images
+import { fileURLToPath } from "url";
+import path from "path";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
+
 // Routes
 import routes from "./routes/index.js";
 app.use("/api", routes);

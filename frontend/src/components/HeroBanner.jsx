@@ -14,16 +14,8 @@ const HeroBanner = () => {
     fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && data.data) {
-          if (data.data.heroSlides && data.data.heroSlides.length > 0) {
-            setHeroSlides(data.data.heroSlides.map((s) => s.image || s));
-          } else if (data.data.bannerUrls && data.data.bannerUrls.length > 0) {
-            setHeroSlides(data.data.bannerUrls);
-          } else {
-            setHeroSlides([
-              "https://endesi.tsoftstatic.com/Data/BlockUploadData/slider/img1/883/revbanner-1-en-6.jpg?1777872443",
-            ]);
-          }
+        if (data.success && data.data?.bannerUrls?.length > 0) {
+          setHeroSlides(data.data.bannerUrls);
         }
       })
       .catch((err) => console.error("Error fetching slides:", err));

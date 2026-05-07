@@ -20,26 +20,20 @@ router.get("/", async (req, res) => {
 // PUT /api/settings - Update settings (Admin only)
 router.put("/", protect, admin, async (req, res) => {
   try {
-    let settings = await Settings.findOne();
-    if (!settings) {
-      settings = new Settings();
-    }
-
+    const update = {};
     if (req.body.whatsappNumber !== undefined) {
-      settings.whatsappNumber = req.body.whatsappNumber;
+      update.whatsappNumber = req.body.whatsappNumber;
     }
     if (req.body.bannerUrls !== undefined) {
-      settings.bannerUrls = req.body.bannerUrls;
-      // also override heroSlides so the app reflects the change immediately
-      // since the frontend prioritizes heroSlides over bannerUrls.
-      settings.heroSlides = req.body.bannerUrls.map((url, i) => ({
-        id: i + 1,
-        image: url,
-        href: "",
-      }));
+      update.bannerUrls = req.body.bannerUrls;
     }
 
-    await settings.save();
+    const settings = await Settings.findOneAndUpdate(
+      {},
+      { $set: update, $unset: { heroSlides: "" } },
+      { upsert: true, new: true, runValidators: true },
+    );
+
     res.json({
       success: true,
       data: settings,

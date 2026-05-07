@@ -6,6 +6,7 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { useToast } from "../../hooks/use-toast";
 import { apiUrl } from "../../lib/api";
+import CloudinaryUpload from "../../components/CloudinaryUpload";
 
 const AdminSettings = ({ token }) => {
   const { toast } = useToast();
@@ -21,17 +22,11 @@ const AdminSettings = ({ token }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.data) {
-          // Check for heroSlides first, fallback to bannerUrls, or default to empty
-          let defaultBanners = [""];
-          if (data.data.heroSlides && data.data.heroSlides.length > 0) {
-            defaultBanners = data.data.heroSlides.map((s) => s.image || s);
-          } else if (data.data.bannerUrls && data.data.bannerUrls.length > 0) {
-            defaultBanners = data.data.bannerUrls;
-          }
-
           setFormData({
             whatsappNumber: data.data.whatsappNumber || "",
-            bannerUrls: defaultBanners,
+            bannerUrls: data.data.bannerUrls?.length
+              ? data.data.bannerUrls
+              : [""],
           });
         }
         setLoading(false);
@@ -47,18 +42,22 @@ const AdminSettings = ({ token }) => {
   };
 
   const handleBannerUrlChange = (index, value) => {
-    const newUrls = [...formData.bannerUrls];
-    newUrls[index] = value;
-    setFormData({ ...formData, bannerUrls: newUrls });
+    setFormData((prev) => {
+      const newUrls = [...prev.bannerUrls];
+      newUrls[index] = value;
+      return { ...prev, bannerUrls: newUrls };
+    });
   };
 
   const addBannerUrl = () => {
-    setFormData({ ...formData, bannerUrls: [...formData.bannerUrls, ""] });
+    setFormData((prev) => ({ ...prev, bannerUrls: [...prev.bannerUrls, ""] }));
   };
 
   const removeBannerUrl = (index) => {
-    const newUrls = formData.bannerUrls.filter((_, i) => i !== index);
-    setFormData({ ...formData, bannerUrls: newUrls.length ? newUrls : [""] });
+    setFormData((prev) => {
+      const newUrls = prev.bannerUrls.filter((_, i) => i !== index);
+      return { ...prev, bannerUrls: newUrls.length ? newUrls : [""] };
+    });
   };
 
   const handleSave = async (e) => {
@@ -79,6 +78,15 @@ const AdminSettings = ({ token }) => {
       });
       const data = await res.json();
       if (data.success) {
+        // Sync form with what DB actually saved
+        if (data.data?.bannerUrls !== undefined) {
+          setFormData((prev) => ({
+            ...prev,
+            bannerUrls: data.data.bannerUrls.length
+              ? data.data.bannerUrls
+              : [""],
+          }));
+        }
         toast({
           title: "Settings Saved",
           description: "Settings updated successfully.",
@@ -131,7 +139,7 @@ const AdminSettings = ({ token }) => {
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <Label className="text-base font-semibold">Banner URLs</Label>
+              <Label className="text-base font-semibold">Banner Images</Label>
               <Button
                 type="button"
                 variant="outline"
@@ -142,14 +150,23 @@ const AdminSettings = ({ token }) => {
               </Button>
             </div>
             {formData.bannerUrls.map((url, index) => (
-              <div key={index} className="flex gap-2">
-                <Input
-                  type="url"
-                  placeholder="https://example.com/image.jpg"
-                  value={url}
-                  onChange={(e) => handleBannerUrlChange(index, e.target.value)}
-                  className="flex-1"
-                />
+              <div
+                key={index}
+                className="flex gap-3 items-center p-3 border border-neutral-200 rounded-lg"
+              >
+                <span className="text-xs text-neutral-400 w-5 text-center shrink-0">
+                  {index + 1}
+                </span>
+                <div className="flex-1">
+                  <CloudinaryUpload
+                    onUpload={(uploadedUrl) =>
+                      handleBannerUrlChange(index, uploadedUrl)
+                    }
+                    onError={(err) => alert("Upload failed: " + err)}
+                    currentImageUrl={url}
+                    token={token}
+                  />
+                </div>
                 <Button
                   type="button"
                   variant="destructive"

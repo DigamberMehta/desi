@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import { ArrowLeft, Save, Plus, Trash2, Eye } from "lucide-react";
 import { apiUrl } from "../../lib/api";
+import CloudinaryUpload from "../../components/CloudinaryUpload";
 
 // ── Reusable components ───────────────────────────────────────────────────────
 const Section = ({ title, subtitle, children }) => (
@@ -538,24 +539,13 @@ const AdminProductForm = ({ token }) => {
           title="Images"
           subtitle="Main product image and up to 5 gallery images"
         >
-          <Field label="Main Image URL">
-            <div className="flex gap-3">
-              <input
-                value={form.image}
-                onChange={(e) => set("image", e.target.value)}
-                required
-                placeholder="https://…"
-                className={inputCls}
-              />
-              {form.image && (
-                <img
-                  src={form.image}
-                  alt="preview"
-                  className="w-12 h-12 rounded-lg object-contain border border-neutral-200 bg-neutral-50 shrink-0"
-                  onError={(e) => (e.target.style.display = "none")}
-                />
-              )}
-            </div>
+          <Field label="Main Image">
+            <CloudinaryUpload
+              onUpload={(url) => set("image", url)}
+              onError={(err) => alert("Upload failed: " + err)}
+              currentImageUrl={form.image}
+              token={token}
+            />
           </Field>
 
           <Field label="Gallery Images" hint="up to 5">
@@ -570,20 +560,17 @@ const AdminProductForm = ({ token }) => {
                   <span className="text-xs text-neutral-400 w-5 shrink-0 text-center">
                     {i + 1}
                   </span>
-                  <input
-                    value={url}
-                    onChange={(e) => updateGallery(i, e.target.value)}
-                    placeholder="https://…"
-                    className={inputCls + " flex-1"}
-                  />
-                  {url && (
+                  <div className="flex-1 flex gap-2 items-center">
                     <img
                       src={url}
                       alt=""
                       className="w-9 h-9 rounded object-contain border border-neutral-200 bg-neutral-50 shrink-0"
                       onError={(e) => (e.target.style.display = "none")}
                     />
-                  )}
+                    <span className="text-xs text-neutral-600 truncate">
+                      {url.substring(0, 50)}...
+                    </span>
+                  </div>
                   <button
                     type="button"
                     onClick={() => removeGallery(i)}
@@ -594,13 +581,15 @@ const AdminProductForm = ({ token }) => {
                 </div>
               ))}
               {form.gallery.length < 5 && (
-                <button
-                  type="button"
-                  onClick={addGallery}
-                  className="flex items-center gap-1.5 text-xs text-[#E60012] hover:text-[#c4000f] font-semibold transition-colors mt-1"
-                >
-                  <Plus className="w-3.5 h-3.5" /> Add Image URL
-                </button>
+                <div className="mt-1">
+                  <CloudinaryUpload
+                    onUpload={(url) =>
+                      setForm((f) => ({ ...f, gallery: [...f.gallery, url] }))
+                    }
+                    onError={(err) => alert("Upload failed: " + err)}
+                    token={token}
+                  />
+                </div>
               )}
             </div>
           </Field>
@@ -1067,23 +1056,13 @@ const AdminProductForm = ({ token }) => {
                     </div>
                   )}
                   {/* Image */}
-                  <Field label="Image URL">
-                    <div className="flex gap-3">
-                      <input
-                        value={cs.image || ""}
-                        onChange={(e) => updateCS(i, ["image"], e.target.value)}
-                        placeholder="https://…"
-                        className={inputCls}
-                      />
-                      {cs.image && (
-                        <img
-                          src={cs.image}
-                          alt=""
-                          className="w-12 h-12 rounded-lg object-contain border border-neutral-200 bg-neutral-50 shrink-0"
-                          onError={(e) => (e.target.style.display = "none")}
-                        />
-                      )}
-                    </div>
+                  <Field label="Image">
+                    <CloudinaryUpload
+                      onUpload={(url) => updateCS(i, ["image"], url)}
+                      onError={(err) => alert("Upload failed: " + err)}
+                      currentImageUrl={cs.image}
+                      token={token}
+                    />
                   </Field>
                   {/* Bullets (not for banner-only types) */}
                   {!["banner", "dark-banner"].includes(cs.type) && (

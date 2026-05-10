@@ -120,44 +120,31 @@ const Home = () => {
       <main>
         <HeroBanner />
 
-        {/* Value props strip */}
-        <section className="bg-neutral-950 text-white relative overflow-hidden">
+        {/* Homes image strip */}
+        <section className="bg-black text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
-          <div className="relative max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Zap,
-                t: { en: "3-Min Install", ar: "تركيب في 3 دقائق" },
-                s: { en: "No drilling required", ar: "بدون حفر" },
-              },
-              {
-                icon: ScanFace,
-                t: { en: "Face Recognition", ar: "تعرّف وجه" },
-                s: { en: "Hands-free entry", ar: "دخول بدون لمس" },
-              },
-              {
-                icon: ShieldCheck,
-                t: { en: "AES-256 Secure", ar: "أمان AES-256" },
-                s: { en: "Bank-grade encryption", ar: "تشفير بنكي" },
-              },
-              {
-                icon: Battery,
-                t: { en: "6-Month Battery", ar: "WPبطارية 6 أشهر" },
-                s: { en: "Type-C rechargeable", ar: "شحن Type-C" },
-              },
-            ].map((v, i) => (
-              <div key={i} className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
-                  <v.icon className="w-6 h-6 text-[#E60012]" />
-                </div>
-                <div>
-                  <p className="font-bold text-[15px] tracking-wide">
-                    {t(v.t)}
-                  </p>
-                  <p className="text-[13px] text-neutral-400 font-medium mt-0.5">
-                    {t(v.s)}
-                  </p>
-                </div>
+          <div className="relative max-w-7xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
+            <div
+              className="overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-sm"
+              style={{ width: "450px", height: "140px" }}
+            >
+              <img
+                src="/homes/s1.png"
+                alt="Homes image 1"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            {["s2.png", "s3.png"].map((file, i) => (
+              <div
+                key={i}
+                className="overflow-hidden"
+                style={{ width: "130px", height: "140px" }}
+              >
+                <img
+                  src={`/homes/${file}`}
+                  alt={`Homes image ${i + 2}`}
+                  className="w-full h-full object-contain"
+                />
               </div>
             ))}
           </div>
@@ -169,7 +156,7 @@ const Home = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
               <div className="max-w-2xl">
                 <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
-                  {t({ en: "Elite Hardware", ar: "عتاد متميّز" })}
+                  {t({ en: "Utopic RX Series", ar: "سلسلة Utopic RX" })}
                 </p>
                 <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight">
                   {t({ en: "Smart Locks", ar: "الأقفال الذكية" })}
@@ -255,8 +242,8 @@ const Home = () => {
               </h2>
               <p className="mt-8 text-neutral-400 leading-relaxed text-lg max-w-lg">
                 {t({
-                  en: "AI-powered face recognition unlocks your door before you even reach it. Works in low light, secured by AES-256 GCM encryption.",
-                  ar: "التعرّف على الوجه المدعوم بالذكاء الاصطناعي يفتح بابك قبل أن تصل إليه. يعمل في الإضاءة الخافتة ومحمي بتشفير AES-256 GCM.",
+                  en: "Scan Face and Push the door AI face recognition Reader that unlocks your door before you even touch it — fast, secure, and protected with AES-256 GCM.",
+                  ar: "امسح وجهك وادفع الباب — قارئ التعرّف على الوجه بالذكاء الاصطناعي يفتح بابك قبل أن تلمسه، بسرعة وأمان، مع حماية بتشفير AES-256 GCM.",
                 })}
               </p>
               <ul className="mt-10 space-y-5">

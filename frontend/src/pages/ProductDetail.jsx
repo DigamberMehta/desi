@@ -161,8 +161,6 @@ const ProductDetail = () => {
             sku: product.sku,
             price: product.priceAED,
             inStock: product.stock > 0,
-            rating: product.rating,
-            reviews: product.reviews,
           })}
         />
       )}
@@ -191,12 +189,12 @@ const ProductDetail = () => {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Gallery */}
             <div className="flex flex-col gap-4">
-              <div className="relative aspect-square bg-linear-to-b from-white to-neutral-50 rounded-3xl flex items-center justify-center p-12 border border-neutral-200/60 shadow-sm overflow-hidden group">
+              <div className="relative aspect-square rounded-3xl flex items-center justify-center p-1 overflow-hidden group">
                 <div className="absolute inset-0 mix-blend-overlay opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-neutral-200 via-transparent to-transparent pointer-events-none"></div>
                 <img
                   src={gallery[active]}
                   alt={t(product.name)}
-                  className="relative z-10 w-full h-full object-contain drop-shadow-md transform transition-transform duration-700 group-hover:scale-105"
+                  className="relative z-10 w-full h-full object-contain c group-hover:scale-105"
                 />
               </div>
               {gallery.length > 1 && (
@@ -240,9 +238,6 @@ const ProductDetail = () => {
                     5.0
                   </span>
                 </div>
-                <span className="text-sm font-medium text-neutral-500 underline decoration-neutral-300 underline-offset-4 cursor-pointer hover:text-neutral-900 transition-colors">
-                  248 {t({ en: "reviews", ar: "مراجعة" })}
-                </span>
               </div>
 
               <div className="mt-6 flex items-baseline gap-3">
@@ -268,10 +263,7 @@ const ProductDetail = () => {
                   </span>
                 </p>
                 <div className="flex items-center gap-3">
-                  {[
-                    { name: "Black", hex: "#171717" },
-                    { name: "Nickel", hex: "#A8A8AC" },
-                  ].map((c) => (
+                  {[{ name: "Black", hex: "#171717" }].map((c) => (
                     <button
                       key={c.name}
                       onClick={() => setColor(c.name)}

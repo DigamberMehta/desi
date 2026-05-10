@@ -79,14 +79,6 @@ export const structuredData = {
       priceCurrency: "AED",
       availability: product.inStock ? "InStock" : "OutOfStock",
     },
-    aggregateRating:
-      product.rating && product.reviews
-        ? {
-            "@type": "AggregateRating",
-            ratingValue: product.rating,
-            reviewCount: product.reviews,
-          }
-        : undefined,
   }),
 
   faqPage: (faqs) => ({

@@ -5,6 +5,7 @@ import { LangProvider } from "./contexts/LangContext";
 import { CartProvider } from "./contexts/CartContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import SearchResults from "./pages/SearchResults";
@@ -12,6 +13,7 @@ import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Support from "./pages/Support";
+import FAQ from "./pages/FAQ";
 import UserManuals from "./pages/UserManuals";
 import AppDownload from "./pages/AppDownload";
 import Cart from "./pages/Cart";
@@ -25,6 +27,7 @@ function App() {
       <LangProvider>
         <CartProvider>
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/admin/*" element={<AdminApp />} />
               <Route path="/*" element={<PublicApp />} />
@@ -60,9 +63,9 @@ const PublicApp = () => (
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/faq" element={<FAQ />} />
         <Route path="/app-download" element={<AppDownload />} />
         <Route path="/user-manuals" element={<UserManuals />} />
-        <Route path="/faq" element={<Support />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>

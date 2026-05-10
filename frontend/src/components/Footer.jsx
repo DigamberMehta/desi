@@ -17,7 +17,10 @@ const Footer = () => {
           label: { en: "Smart Locks", ar: "الأقفال الذكية" },
         },
         { to: "/accessories", label: { en: "Accessories", ar: "الملحقات" } },
-        { to: "/smart-locks", label: { en: "New Arrivals", ar: "وصل حديثاً" } },
+        {
+          to: "/smart-locks",
+          label: { en: "Dubai, UAE Shop", ar: "متجر دبي الإمارات" },
+        },
       ],
     },
     {
@@ -29,7 +32,7 @@ const Footer = () => {
         },
         { to: "/faq", label: { en: "FAQ", ar: "الأسئلة الشائعة" } },
         {
-          to: "/support",
+          to: "/contact",
           label: { en: "Compatibility Check", ar: "فحص التوافق" },
         },
         { to: "/contact", label: { en: "Warranty", ar: "الضمان" } },
@@ -40,8 +43,7 @@ const Footer = () => {
       links: [
         { to: "/about", label: { en: "About DESi", ar: "عن ديسي" } },
         { to: "/contact", label: { en: "Contact", ar: "اتصل بنا" } },
-        { to: "/about", label: { en: "Press", ar: "الإعلام" } },
-        { to: "/about", label: { en: "Become a Reseller", ar: "كن موزعاً" } },
+        { to: "/contact", label: { en: "Become a Reseller", ar: "كن موزعاً" } },
       ],
     },
   ];
@@ -55,12 +57,6 @@ const Footer = () => {
             <span className="text-[#E60012] text-[10px] font-bold uppercase tracking-[0.2em] mb-3 inline-block">
               {t({ en: "Newsletter", ar: "النشرة البريدية" })}
             </span>
-            <h3 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-              {t({
-                en: "Get 5% off your first lock.",
-                ar: "احصل على خصم 5% على أول قفل ذكي.",
-              })}
-            </h3>
             <p className="text-neutral-500 font-medium">
               {t({
                 en: "Subscribe for UAE-exclusive offers, install tips & new releases.",

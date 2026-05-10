@@ -12,6 +12,8 @@ import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Support from "./pages/Support";
+import UserManuals from "./pages/UserManuals";
+import AppDownload from "./pages/AppDownload";
 import Cart from "./pages/Cart";
 import AdminApp from "./AdminApp";
 import { Toaster } from "./components/ui/toaster";
@@ -58,6 +60,8 @@ const PublicApp = () => (
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/app-download" element={<AppDownload />} />
+        <Route path="/user-manuals" element={<UserManuals />} />
         <Route path="/faq" element={<Support />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>

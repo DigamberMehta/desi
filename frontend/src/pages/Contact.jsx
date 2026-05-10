@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 import { useLang } from "../contexts/LangContext";
 import SEOHead from "../components/SEOHead";
 import { Button } from "../components/ui/button";
@@ -75,14 +75,6 @@ const Contact = () => {
           <div className="space-y-5">
             {[
               {
-                icon: MapPin,
-                t: { en: "Visit our showroom", ar: "زر صالة العرض" },
-                d: {
-                  en: "Sheikh Zayed Road, Dubai, UAE",
-                  ar: "شارع الشيخ زايد ، دبي",
-                },
-              },
-              {
                 icon: Phone,
                 t: { en: "Call us", ar: "اتصل بنا" },
                 d: { en: "+971 4 200 0000", ar: "+971 4 200 0000" },
@@ -91,11 +83,6 @@ const Contact = () => {
                 icon: Mail,
                 t: { en: "Email us", ar: "البريد الإلكتروني" },
                 d: { en: "info@desi.ae", ar: "info@desi.ae" },
-              },
-              {
-                icon: Clock,
-                t: { en: "Working hours", ar: "ساعات العمل" },
-                d: { en: "Sat–Thu, 9 AM – 8 PM", ar: "السبت–الخميس، 9ص – 8م" },
               },
               {
                 icon: MessageCircle,

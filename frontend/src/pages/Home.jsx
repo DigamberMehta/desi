@@ -291,10 +291,10 @@ const Home = () => {
                 </Button>
               </Link>
             </div>
-            <div className="relative group">
+            <div className="relative group max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent z-10"></div>
               <img
-                src="https://endesi.tsoftstatic.com/Data/EditorFiles/rxgifmontajna.gif"
+                src="/VideoProject-ezgif.com-crop.gif"
                 alt="Face recognition"
                 className="w-full rounded-2xl shadow-2xl relative z-0 transform transition-transform duration-700 group-hover:scale-105 border border-white/10"
               />
@@ -339,103 +339,117 @@ const Home = () => {
         </section>
 
         {/* Live in action */}
-        <section className="bg-neutral-50/50 py-24">
+        <section className="bg-neutral-100 py-24">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-              <div>
-                <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
-                  {t({ en: "Live in Action", ar: "لحظات حقيقية" })}
-                </p>
-                <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight">
-                  {t({ en: "Smart moments", ar: "لحظات ذكية" })}
-                </h2>
-                <p className="mt-4 text-neutral-500 text-lg">
-                  {t({
-                    en: "Real installations and quick guides in short clips.",
-                    ar: "تركيبات حقيقية وأدلة سريعة في مقاطع قصيرة.",
-                  })}
-                </p>
-              </div>
-              <a
-                href="https://www.youtube.com/playlist?list=PLzetQrmBzdo2Ooqat5YV_GjlIhr2QDBuX"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold text-neutral-900 border-b-2 border-neutral-900 pb-1 hover:text-[#E60012] hover:border-[#E60012] transition-colors uppercase tracking-[0.1em]"
-              >
-                {t({ en: "YouTube Channel", ar: "قناة يوتيوب" })}{" "}
-                <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-              </a>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {["rxgifmontajna.gif", "rxgif1.gif", "gif-2-en.gif"].map(
-                (g, i) => (
-                  <div
-                    key={i}
-                    className="aspect-video rounded-2xl overflow-hidden bg-black shadow-lg group relative"
-                  >
-                    <div className="absolute inset-0 bg-black/20 transition-opacity group-hover:opacity-0 z-10"></div>
-                    <img
-                      src={`https://shop.desi.com.tr/Data/EditorFiles/${g}`}
-                      alt="clip"
-                      className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-                      onError={(e) => {
-                        e.currentTarget.src =
-                          "https://endesi.tsoftstatic.com/Data/EditorFiles/" +
-                          g;
-                      }}
-                    />
-                  </div>
-                ),
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section className="max-w-7xl mx-auto px-4 py-24">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
-              {t({ en: "UAE Customers", ar: "عملاء في الإمارات" })}
-            </p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight">
-              {t({
-                en: "Trusted across the Emirates",
-                ar: "موثوق في كل الإمارات",
-              })}
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testimonials.map((tm, i) => (
-              <div
-                key={i}
-                className="p-8 bg-white border border-neutral-100 rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="flex items-center gap-1 mb-5">
-                  {Array.from({ length: tm.rating }).map((_, j) => (
-                    <Star
-                      key={j}
-                      className="w-4 h-4 fill-amber-400 text-amber-400"
-                    />
-                  ))}
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
+              {/* Left sidebar */}
+              <div className="lg:w-56 flex-shrink-0 flex flex-col gap-6">
+                <div>
+                  <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
+                    {t({ en: "Live in Action", ar: "لحظات حقيقية" })}
+                  </p>
+                  <h2 className="mt-3 text-4xl font-black tracking-tight leading-tight">
+                    {t({ en: "Smart Moments", ar: "لحظات ذكية" })}
+                  </h2>
+                  <p className="mt-4 text-neutral-500 text-sm leading-relaxed">
+                    {t({
+                      en: "Real installations and quick guides in short clips.",
+                      ar: "تركيبات حقيقية وأدلة سريعة في مقاطع قصيرة.",
+                    })}
+                  </p>
                 </div>
-                <p className="text-neutral-600 leading-relaxed font-medium">
-                  “{t(tm.text)}”
-                </p>
-                <div className="mt-8 pt-5 border-t border-neutral-100 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center font-bold text-neutral-400 text-sm">
-                    {tm.name.charAt(0)}
+                {/* YouTube channel card */}
+                <a
+                  href="https://www.youtube.com/playlist?list=PLzetQrmBzdo2Ooqat5YV_GjlIhr2QDBuX"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="font-bold text-sm text-neutral-900">
-                      {tm.name}
+                    <p className="text-sm font-bold text-neutral-900 leading-tight">
+                      {t({ en: "Official Channel", ar: "القناة الرسمية" })}
                     </p>
-                    <p className="text-xs text-neutral-500 font-medium">
-                      {t(tm.city)}
+                    <p className="text-xs text-neutral-500 mt-0.5">
+                      {t({
+                        en: "Watch more on YouTube",
+                        ar: "شاهد المزيد على يوتيوب",
+                      })}
                     </p>
                   </div>
-                </div>
+                </a>
               </div>
-            ))}
+
+              {/* Featured large video */}
+              <a
+                href="https://www.youtube.com/shorts/YQHzRB7QaMQ"
+                target="_blank"
+                rel="noreferrer"
+                className="lg:flex-1 rounded-3xl overflow-hidden bg-black shadow-xl group relative block aspect-[3/4] lg:aspect-auto lg:min-h-[500px]"
+                style={{ border: "3px solid #00d4ff" }}
+              >
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors z-10 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-[#00d4ff] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                    <svg
+                      className="w-8 h-8 text-black"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <polygon points="5 3 19 12 5 21" />
+                    </svg>
+                  </div>
+                </div>
+                <img
+                  src="https://img.youtube.com/vi/YQHzRB7QaMQ/maxresdefault.jpg"
+                  alt="Featured video"
+                  className="w-full h-full object-cover"
+                />
+              </a>
+
+              {/* 2x2 grid of smaller videos */}
+              <div className="lg:w-72 grid grid-cols-2 gap-3">
+                {[
+                  { id: "xLdQ4QNAkYY" },
+                  { id: "h-IgvXpOTYQ" },
+                  { id: "ODF_nTb3kXI" },
+                  { id: "TrsAPDOvvDQ" },
+                ].map((v, i) => (
+                  <a
+                    key={i}
+                    href={`https://www.youtube.com/shorts/${v.id}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-2xl overflow-hidden bg-black shadow-md group relative block aspect-[9/16]"
+                    style={{ border: "2px solid transparent" }}
+                  >
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors z-10 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <svg
+                          className="w-4 h-4 text-neutral-900"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <polygon points="5 3 19 12 5 21" />
+                        </svg>
+                      </div>
+                    </div>
+                    <img
+                      src={`https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`}
+                      alt="YouTube Short"
+                      className="w-full h-full object-cover"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

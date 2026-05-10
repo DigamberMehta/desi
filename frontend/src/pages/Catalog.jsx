@@ -69,10 +69,32 @@ const Catalog = ({ category }) => {
     if (q)
       list = list.filter((p) => (t(p.name) || "").toLowerCase().includes(q));
     if (onlyNew) list = list.filter((p) => p.isNew);
+
     if (sort === "price-asc")
       list = [...list].sort((a, b) => a.priceAED - b.priceAED);
     else if (sort === "price-desc")
       list = [...list].sort((a, b) => b.priceAED - a.priceAED);
+    else if (sort === "default" && category === "smart-locks") {
+      // Custom order for smart-locks
+      const customOrder = [
+        "desi-utopic-rx-base",
+        "desi-utopic-rx-wifi",
+        "desi-utopic-rx-fingerprint-wifi",
+        "desi-utopic-rx-face-recognition",
+        "desi-quic-v002",
+      ];
+      list = [...list].sort((a, b) => {
+        const indexA = customOrder.indexOf(a.slug);
+        const indexB = customOrder.indexOf(b.slug);
+        // Products in custom order come first, in specified order
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        // Product in custom order comes before others
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+        // Other products maintain original order
+        return 0;
+      });
+    }
     return list;
   }, [category, q, sort, onlyNew, lang, t, products]);
 

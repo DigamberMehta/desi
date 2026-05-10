@@ -120,13 +120,55 @@ const Home = () => {
       <main>
         <HeroBanner />
 
+      <section className="bg-neutral-950 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
+          <div className="relative max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Zap,
+                t: { en: "3-Min Install", ar: "تركيب في 3 دقائق" },
+                s: { en: "No drilling required", ar: "بدون حفر" },
+              },
+              {
+                icon: ScanFace,
+                t: { en: "Face Recognition", ar: "تعرّف وجه" },
+                s: { en: "Hands-free entry", ar: "دخول بدون لمس" },
+              },
+              {
+                icon: ShieldCheck,
+                t: { en: "AES-256 Secure", ar: "أمان AES-256" },
+                s: { en: "Bank-grade encryption", ar: "تشفير بنكي" },
+              },
+              {
+                icon: Battery,
+                t: { en: "6-Month Battery", ar: "WPبطارية 6 أشهر" },
+                s: { en: "Type-C rechargeable", ar: "شحن Type-C" },
+              },
+            ].map((v, i) => (
+              <div key={i} className="flex items-center gap-4 group">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
+                  <v.icon className="w-6 h-6 text-[#E60012]" />
+                </div>
+                <div>
+                  <p className="font-bold text-[15px] tracking-wide">
+                    {t(v.t)}
+                  </p>
+                  <p className="text-[13px] text-neutral-400 font-medium mt-0.5">
+                    {t(v.s)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Homes image strip */}
         <section className="bg-black text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
           <div className="relative max-w-7xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
             <div
               className="overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-sm"
-              style={{ width: "450px", height: "140px" }}
+              style={{ width: "450px", height: "100px" }}
             >
               <img
                 src="/homes/s1.png"
@@ -134,11 +176,11 @@ const Home = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            {["s2.png", "s3.png"].map((file, i) => (
+            {["s2.png","s4.png", "s3.png" ].map((file, i) => (
               <div
                 key={i}
                 className="overflow-hidden"
-                style={{ width: "130px", height: "140px" }}
+                style={{ width: "120px", height: "120px" }}
               >
                 <img
                   src={`/homes/${file}`}
@@ -150,6 +192,8 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Value props strip */}
+  
         {/* Featured products - Smart Locks */}
         <section className="bg-neutral-50/50">
           <div className="max-w-7xl mx-auto px-4 py-24">

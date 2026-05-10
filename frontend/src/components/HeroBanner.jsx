@@ -32,7 +32,7 @@ const HeroBanner = () => {
 
   if (heroSlides.length === 0)
     return (
-      <div className="h-[460px] md:h-[560px] lg:h-[620px] bg-neutral-100 flex items-center justify-center">
+      <div className="h-[250px] md:h-[560px] lg:h-[620px] bg-neutral-100 flex items-center justify-center">
         Loading...
       </div>
     );
@@ -40,7 +40,7 @@ const HeroBanner = () => {
   const s = heroSlides[idx];
 
   return (
-    <section className="relative h-[460px] md:h-[560px] lg:h-[620px] overflow-hidden bg-neutral-100">
+    <section className="relative h-[160px] md:h-[560px] lg:h-[620px] overflow-hidden bg-neutral-100">
       {heroSlides.map((url, i) => (
         <div
           key={i}
@@ -54,30 +54,29 @@ const HeroBanner = () => {
         </div>
       ))}
 
-      {/* Navigation */}
       <button
         onClick={() =>
           setIdx((i) => (i - 1 + heroSlides.length) % heroSlides.length)
         }
-        className="absolute start-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/20 hover:bg-black/50 backdrop-blur flex items-center justify-center text-white transition-colors"
+        className="absolute start-2 md:start-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 lg:w-11 lg:h-11 rounded-full bg-black/20 hover:bg-black/50 backdrop-blur flex items-center justify-center text-white transition-colors"
         aria-label="Previous"
       >
-        <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
+        <ChevronLeft className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5 rtl:rotate-180" />
       </button>
       <button
         onClick={() => setIdx((i) => (i + 1) % heroSlides.length)}
-        className="absolute end-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/20 hover:bg-black/50 backdrop-blur flex items-center justify-center text-white transition-colors"
+        className="absolute end-2 md:end-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 lg:w-11 lg:h-11 rounded-full bg-black/20 hover:bg-black/50 backdrop-blur flex items-center justify-center text-white transition-colors"
         aria-label="Next"
       >
-        <ChevronRight className="w-5 h-5 rtl:rotate-180" />
+        <ChevronRight className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5 rtl:rotate-180" />
       </button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+      <div className="absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1.5 md:gap-2">
         {heroSlides.map((_, i) => (
           <button
             key={i}
             onClick={() => setIdx(i)}
-            className={`h-1.5 rounded-full transition-all ${i === idx ? "w-10 bg-[#E60012]" : "w-2.5 bg-white/50 hover:bg-white/80"}`}
+            className={`h-1 md:h-1.5 rounded-full transition-all ${i === idx ? "w-6 md:w-10 bg-[#E60012]" : "w-1.5 md:w-2.5 bg-white/50 hover:bg-white/80"}`}
             aria-label={`Slide ${i + 1}`}
           />
         ))}

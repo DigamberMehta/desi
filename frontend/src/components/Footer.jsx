@@ -17,7 +17,6 @@ const Footer = () => {
           label: { en: "Smart Locks", ar: "الأقفال الذكية" },
         },
         { to: "/accessories", label: { en: "Accessories", ar: "الملحقات" } },
-       
       ],
     },
     {
@@ -71,7 +70,7 @@ const Footer = () => {
                 }),
               );
             }}
-            className="flex gap-3"
+            className="flex flex-col sm:flex-row gap-3"
           >
             <Input
               type="email"

@@ -269,14 +269,14 @@ const FAQ = () => {
       />
       <main>
         <section className="bg-neutral-950 text-white">
-          <div className="max-w-7xl mx-auto px-4 py-16">
+          <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16">
             <p className="text-[#E60012] text-xs font-bold uppercase tracking-widest">
               {t({ en: "FAQ", ar: "الأسئلة الشائعة" })}
             </p>
-            <h1 className="mt-2 text-4xl md:text-5xl font-black">
+            <h1 className="mt-2 text-2xl md:text-4xl lg:text-5xl font-black">
               {t({ en: "Frequently Asked Questions", ar: "الأسئلة الشائعة" })}
             </h1>
-            <p className="mt-3 text-neutral-300 max-w-2xl">
+            <p className="mt-2 md:mt-3 text-neutral-300 max-w-2xl text-sm md:text-base">
               {t({
                 en: "Find answers to common questions about DESi Smart Locks, installation, compatibility, and more.",
                 ar: "ابحث عن إجابات للأسئلة الشائعة حول أقفال DESi الذكية والتركيب والتوافق وغير ذلك.",
@@ -286,7 +286,7 @@ const FAQ = () => {
         </section>
 
         <section className="bg-neutral-50">
-          <div className="max-w-4xl mx-auto px-4 py-16">
+          <div className="max-w-4xl mx-auto px-4 py-8 md:py-12 lg:py-16">
             <div className="mt-10">
               <Accordion
                 type="single"

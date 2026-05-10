@@ -55,14 +55,14 @@ const Contact = () => {
       />
       <main>
         <section className="bg-neutral-950 text-white">
-          <div className="max-w-7xl mx-auto px-4 py-16">
+          <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16">
             <p className="text-[#E60012] text-xs font-bold uppercase tracking-widest">
               {t({ en: "Get in touch", ar: "تواصل معنا" })}
             </p>
-            <h1 className="mt-2 text-4xl md:text-5xl font-black">
+            <h1 className="mt-2 text-2xl md:text-4xl lg:text-5xl font-black">
               {t({ en: "We're here to help", ar: "نحن هنا لمساعدتك" })}
             </h1>
-            <p className="mt-3 text-neutral-300 max-w-2xl">
+            <p className="mt-2 md:mt-3 text-neutral-300 max-w-2xl text-sm md:text-base">
               {t({
                 en: "Pre-sales questions, installation help, or warranty claims — our UAE team responds within hours.",
                 ar: "أسئلة ما قبل البيع ، مساعدة التركيب ، أو الضمان — فريقنا في الإمارات يرد خلال ساعات.",
@@ -71,8 +71,8 @@ const Contact = () => {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-3 gap-10">
-          <div className="space-y-5">
+        <section className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16 grid lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10">
+          <div className="space-y-3 md:space-y-5">
             {[
               {
                 icon: Phone,
@@ -92,10 +92,10 @@ const Contact = () => {
             ].map((c, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 p-5 border border-neutral-200 rounded-xl hover:border-[#E60012] transition-colors"
+                className="flex items-start gap-3 p-3 md:p-5 border border-neutral-200 rounded-xl hover:border-[#E60012] transition-colors"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#E60012]/10 flex items-center justify-center flex-shrink-0">
-                  <c.icon className="w-5 h-5 text-[#E60012]" />
+                <div className="w-8 h-8 md:w-11 md:h-11 rounded-lg bg-[#E60012]/10 flex items-center justify-center flex-shrink-0">
+                  <c.icon className="w-4 h-4 md:w-5 md:h-5 text-[#E60012]" />
                 </div>
                 <div>
                   <p className="font-bold">{t(c.t)}</p>

@@ -35,26 +35,26 @@ const AppDownload = () => {
       />
       <main>
         <section className="bg-neutral-950 text-white">
-          <div className="max-w-7xl mx-auto px-4 py-16">
+          <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16">
             <Link
               to="/support"
-              className="flex items-center gap-2 text-[#E60012] hover:text-[#b8000e] mb-6 w-fit"
+              className="flex items-center gap-2 text-[#E60012] hover:text-[#b8000e] mb-4 md:mb-6 w-fit"
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm font-semibold">
+              <ArrowLeft className="w-3.5 h-3.5 md:w-4 md:h-4" />
+              <span className="text-xs md:text-sm font-semibold">
                 {t({ en: "Back to Support", ar: "العودة إلى الدعم" })}
               </span>
             </Link>
             <p className="text-[#E60012] text-xs font-bold uppercase tracking-widest">
               {t({ en: "Mobile App", ar: "تطبيق الهاتف المحمول" })}
             </p>
-            <h1 className="mt-2 text-4xl md:text-5xl font-black">
+            <h1 className="mt-2 text-2xl md:text-4xl lg:text-5xl font-black">
               {t({
                 en: "DESi Smart App",
                 ar: "تطبيق DESi الذكي",
               })}
             </h1>
-            <p className="mt-3 text-neutral-300 max-w-2xl">
+            <p className="mt-2 md:mt-3 text-neutral-300 max-w-2xl text-sm md:text-base">
               {t({
                 en: "Download the official DESi Smart App for iOS and Android. Control your locks, manage users, and monitor access from anywhere in the world.",
                 ar: "حمّل تطبيق DESi الرسمي لأجهزة iOS وAndroid. تحكم بأقفالك وإدارة المستخدمين ومراقبة الوصول من أي مكان.",
@@ -63,16 +63,18 @@ const AppDownload = () => {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 gap-12">
+        <section className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
             {/* iOS */}
             <div className="flex flex-col items-center text-center">
-              <div className="mb-8">
-                <div className="text-[#E60012] mb-4">
-                  <Apple className="w-12 h-12 mx-auto" />
+              <div className="mb-4 md:mb-8">
+                <div className="text-[#E60012] mb-3 md:mb-4">
+                  <Apple className="w-10 h-10 md:w-12 md:h-12 mx-auto" />
                 </div>
-                <h2 className="text-2xl font-bold mb-2">Apple App Store</h2>
-                <p className="text-neutral-600 mb-6">
+                <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">
+                  Apple App Store
+                </h2>
+                <p className="text-neutral-600 mb-4 md:mb-6 text-xs md:text-sm">
                   {t({
                     en: "Available for iPhone and iPad",
                     ar: "متاح لأجهزة iPhone و iPad",

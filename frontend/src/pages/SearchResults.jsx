@@ -53,13 +53,13 @@ const SearchResults = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="mb-8">
-            <p className="text-lg text-neutral-600">
+        <div className="max-w-7xl mx-auto px-4 py-8 md:py-10 lg:py-12">
+          <div className="mb-6 md:mb-8">
+            <p className="text-base md:text-lg text-neutral-600">
               {t({ en: "Search results for:", ar: "نتائج البحث عن:" })}{" "}
-              <span className="font-bold text-neutral-900">"{q}"</span>
+              <span className="font-bold text-neutral-900">\"{{ q }}\"</span>
             </p>
-            <p className="text-sm text-neutral-500 mt-1">
+            <p className="text-xs md:text-sm text-neutral-500 mt-1">
               {filtered.length} {t({ en: "products found", ar: "منتجات وجدت" })}
             </p>
           </div>
@@ -80,7 +80,7 @@ const SearchResults = () => {
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-6">
               {filtered.map((product) => (
                 <ProductCard key={product.slug} product={product} />
               ))}

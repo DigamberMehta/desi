@@ -185,8 +185,8 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+        <div className="max-w-7xl mx-auto px-4 py-10 md:py-16">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
             {/* Gallery */}
             <div className="flex flex-col gap-4">
               <div className="relative aspect-square rounded-3xl flex items-center justify-center p-1 overflow-hidden group">
@@ -333,20 +333,17 @@ const ProductDetail = () => {
 
         {/* ── HERO BANNER ──────────────────────────────────── */}
         <div className="px-4 md:px-8">
-          <div
-            className="bg-[#0e0e0e] rounded-2xl overflow-hidden"
-            style={{ height: "430px" }}
-          >
+          <div className="bg-[#0e0e0e] rounded-2xl overflow-hidden min-h-[220px] md:h-[430px]">
             <div className="grid md:grid-cols-[55%_45%] h-full">
               {/* Left */}
-              <div className="flex flex-col justify-center px-10 md:px-14 py-10 h-full">
-                <div className="flex items-center gap-3 mb-5">
+              <div className="flex flex-col justify-center px-6 md:px-14 py-8 md:py-10 h-full">
+                <div className="flex items-center gap-3 mb-4 md:mb-5">
                   <span className="w-8 h-px bg-[#00a693] shrink-0"></span>
                   <span className="text-[#00a693] text-[10px] font-bold uppercase tracking-[0.25em]">
                     {heroSeriesLabel}
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-black text-white leading-none tracking-tight mb-5">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-none tracking-tight mb-4 md:mb-5">
                   {heroNameParts.map((part, i) =>
                     /^(RX|QuiC)$/.test(part) ? (
                       <span key={i} className="text-[#00a693]">
@@ -391,9 +388,9 @@ const ProductDetail = () => {
         {product.quickFeatures?.length > 0 && (
           <div className="px-4 md:px-8 mt-4">
             <div className="bg-[#141414] rounded-2xl overflow-hidden">
-              <div className="max-w-7xl mx-auto">
+              <div className="overflow-x-auto">
                 <div
-                  className="grid divide-x divide-white/10"
+                  className="flex divide-x divide-white/10 min-w-max md:min-w-0 md:grid"
                   style={{
                     gridTemplateColumns: `repeat(${product.quickFeatures.length}, 1fr)`,
                   }}
@@ -401,7 +398,7 @@ const ProductDetail = () => {
                   {product.quickFeatures.map((feat, fi) => (
                     <div
                       key={fi}
-                      className="flex flex-col items-center text-center px-6 py-10"
+                      className="flex flex-col items-center text-center px-6 py-8 md:py-10 min-w-[140px] md:min-w-0"
                     >
                       <span className="text-4xl mb-4 leading-none">
                         {feat.icon}

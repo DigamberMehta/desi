@@ -141,11 +141,11 @@ const Cart = () => {
   const finalTotal = totalAED + shipping;
 
   return (
-    <main className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-3xl md:text-4xl font-black">
+    <main className="max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-12">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-black">
         {t({ en: "Shopping Cart", ar: "سلة التسوّق" })}
       </h1>
-      <p className="text-neutral-600 mt-1">
+      <p className="text-neutral-600 mt-1 text-sm md:text-base">
         {items.length} {t({ en: "item(s)", ar: "عنصر" })}
       </p>
       <div className="mt-8 grid lg:grid-cols-3 gap-8">

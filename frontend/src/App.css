@@ -4,28 +4,40 @@
 }
 
 html[dir="rtl"] body {
-  font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+  font-family: "Cairo", "Inter", system-ui, sans-serif;
 }
 
 html[dir="ltr"] body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 /* Hide scrollbar styling */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: #f5f5f5; }
-::-webkit-scrollbar-thumb { background: #cfcfcf; border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: #E60012; }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e60012;
+}
 
 /* Smooth focus states for inputs */
-input:focus-visible, textarea:focus-visible, select:focus-visible {
-  outline: 2px solid #E60012;
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #e60012;
   outline-offset: 1px;
 }
 
 /* Selection color */
 ::selection {
-  background: #E60012;
+  background: #e60012;
   color: white;
 }
 
@@ -38,4 +50,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 }
 
 /* RTL flip arrows where needed */
-[dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}

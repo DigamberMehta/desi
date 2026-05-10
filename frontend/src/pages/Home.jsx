@@ -122,7 +122,7 @@ const Home = () => {
 
         <section className="bg-neutral-950 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
-          <div className="relative max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="relative max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8">
             {[
               {
                 icon: Zap,
@@ -150,19 +150,24 @@ const Home = () => {
                 },
               },
             ].map((v, i) => (
-              <div key={i} className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
+              <div
+                key={i}
+                className="flex items-center gap-2 md:gap-3 lg:gap-4 group"
+              >
+                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
                   {v.isEmoji ? (
-                    <span className="text-2xl">{v.emoji}</span>
+                    <span className="text-lg md:text-xl lg:text-2xl">
+                      {v.emoji}
+                    </span>
                   ) : (
-                    <v.icon className="w-6 h-6 text-[#E60012]" />
+                    <v.icon className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#E60012]" />
                   )}
                 </div>
                 <div>
-                  <p className="font-bold text-[15px] tracking-wide">
+                  <p className="font-bold text-xs sm:text-[15px] tracking-wide">
                     {t(v.t)}
                   </p>
-                  <p className="text-[13px] text-neutral-400 font-medium mt-0.5 whitespace-pre-line">
+                  <p className="text-[11px] sm:text-[13px] text-neutral-400 font-medium mt-0.5 whitespace-pre-line">
                     {t(v.s)}
                   </p>
                 </div>
@@ -174,7 +179,7 @@ const Home = () => {
         {/* Homes feature strip - Icons with text */}
         <section className="bg-black text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
-          <div className="relative max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="relative max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8">
             {[
               {
                 icon: ScanFace,
@@ -197,15 +202,18 @@ const Home = () => {
                 desc: { en: "Full coverage", ar: "تغطية كاملة" },
               },
             ].map((feature, i) => (
-              <div key={i} className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
-                  <feature.icon className="w-6 h-6 text-[#E60012]" />
+              <div
+                key={i}
+                className="flex items-center gap-2 md:gap-3 lg:gap-4 group"
+              >
+                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
+                  <feature.icon className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#E60012]" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[15px] tracking-wide">
+                  <h3 className="font-bold text-xs sm:text-[15px] tracking-wide">
                     {t(feature.title)}
                   </h3>
-                  <p className="text-[13px] text-neutral-400 font-medium mt-0.5">
+                  <p className="text-[11px] sm:text-[13px] text-neutral-400 font-medium mt-0.5">
                     {t(feature.desc)}
                   </p>
                 </div>
@@ -219,28 +227,28 @@ const Home = () => {
         {/* Big feature — face recognition */}
         <section className="bg-neutral-950 text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#E60012]/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
-          <div className="max-w-7xl mx-auto px-4 py-24 md:py-32 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+          <div className="max-w-7xl mx-auto px-4 py-8 md:py-14 lg:py-32 grid lg:grid-cols-2 gap-6 md:gap-10 lg:gap-16 items-center relative z-10">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
-                <Sparkles className="w-4 h-4 text-[#E60012]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4 md:mb-6">
+                <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-[#E60012]" />
                 <p className="text-white/80 text-[11px] font-bold uppercase tracking-[0.2em]">
                   {t({ en: "Hands-Free Entry", ar: "دخول بدون لمس" })}
                 </p>
               </div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight">
                 {t({ en: "Just push the door.", ar: "فقط ادفع الباب." })}
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E60012] to-[#ff4d5a]">
                   {t({ en: "Your face is your key.", ar: "وجهك هو مفتاحك." })}
                 </span>
               </h2>
-              <p className="mt-8 text-neutral-400 leading-relaxed text-lg max-w-lg">
+              <p className="mt-8 text-neutral-400 leading-relaxed text-sm sm:text-base md:text-lg max-w-lg">
                 {t({
                   en: "Scan Face and Push the door AI face recognition Reader that unlocks your door before you even touch it — fast, secure, and protected with AES-256 GCM.",
                   ar: "امسح وجهك وادفع الباب — قارئ التعرّف على الوجه بالذكاء الاصطناعي يفتح بابك قبل أن تلمسه، بسرعة وأمان، مع حماية بتشفير AES-256 GCM.",
                 })}
               </p>
-              <ul className="mt-10 space-y-5">
+              <ul className="mt-6 md:mt-10 space-y-3 md:space-y-5">
                 {[
                   {
                     en: "Recognizes up to 37 faces with millisecond accuracy",
@@ -255,24 +263,24 @@ const Home = () => {
                     ar: "خيارات بديلة: PIN ، بصمة ، تطبيق أو مفتاح",
                   },
                 ].map((f, i) => (
-                  <li key={i} className="flex items-start gap-4">
-                    <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#E60012]/20 text-[#E60012] mt-0.5">
-                      <Check className="w-3.5 h-3.5" />
+                  <li key={i} className="flex items-start gap-3 md:gap-4">
+                    <span className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#E60012]/20 text-[#E60012] mt-0.5 flex-shrink-0">
+                      <Check className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     </span>
-                    <span className="text-neutral-300 font-medium text-base">
+                    <span className="text-neutral-300 font-medium text-sm sm:text-base">
                       {t(f)}
                     </span>
                   </li>
                 ))}
               </ul>
               <Link to="/product/desi-utopic-rx-face-recognition">
-                <Button className="mt-12 h-14 px-8 bg-[#E60012] hover:bg-[#c4000f] text-white font-bold uppercase tracking-wider text-sm rounded-full shadow-lg shadow-red-900/20 transition-transform hover:-translate-y-1">
+                <Button className="mt-8 md:mt-12 h-12 md:h-14 px-7 md:px-8 bg-[#E60012] hover:bg-[#c4000f] text-white font-bold uppercase tracking-wider text-sm rounded-full shadow-lg shadow-red-900/20 transition-transform hover:-translate-y-1">
                   {t({ en: "Shop Utopic RX", ar: "تسوّق يوتوبيك RX" })}
                   <ArrowRight className="w-5 h-5 ms-2 rtl:rotate-180" />
                 </Button>
               </Link>
             </div>
-            <div className="relative group">
+            <div className="relative group hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent z-10"></div>
               <img
                 src="/VideoProject-ezgif.com-crop.gif"
@@ -285,16 +293,16 @@ const Home = () => {
 
         {/* Featured products - Smart Locks */}
         <section className="bg-neutral-50/50">
-          <div className="max-w-7xl mx-auto px-4 py-24">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="max-w-7xl mx-auto px-4 py-14 md:py-24">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6">
               <div className="max-w-2xl">
                 <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
                   {t({ en: "Utopic RX Series", ar: "سلسلة Utopic RX" })}
                 </p>
-                <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight">
+                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
                   {t({ en: "Smart Locks", ar: "الأقفال الذكية" })}
                 </h2>
-                <p className="mt-4 text-neutral-500 text-lg leading-relaxed">
+                <p className="mt-4 text-neutral-500 text-sm sm:text-base md:text-lg leading-relaxed">
                   {t({
                     en: "The world's smallest smart lock series — universal mounting, AI-powered, made for UAE homes.",
                     ar: "أصغر سلسلة أقفال ذكية — تركيب شامل ، مدعومة بالذكاء الاصطناعي، لمنازل الإمارات.",
@@ -310,7 +318,7 @@ const Home = () => {
               </Link>
             </div>
             {smartLocks.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
                 {smartLocks.map((p) => (
                   <ProductCard key={p.slug} product={p} />
                 ))}
@@ -329,16 +337,16 @@ const Home = () => {
         {/* Featured products - Accessories */}
         {accessories.length > 0 && (
           <section className="bg-white">
-            <div className="max-w-7xl mx-auto px-4 pb-24 pt-12">
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div className="max-w-7xl mx-auto px-4 pb-14 pt-8 md:pb-24 md:pt-12">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6">
                 <div className="max-w-2xl">
                   <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
                     {t({ en: "Expand & Enhance", ar: "توسيع وتحسين" })}
                   </p>
-                  <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight">
+                  <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
                     {t({ en: "Accessories", ar: "الملحقات" })}
                   </h2>
-                  <p className="mt-4 text-neutral-500 text-lg leading-relaxed">
+                  <p className="mt-4 text-neutral-500 text-sm sm:text-base md:text-lg leading-relaxed">
                     {t({
                       en: "Take your smart lock experience to the next level with our premium accessories.",
                       ar: "ارتقِ بتجربة القفل الذكي الخاص بك إلى المستوى التالي مع ملحقاتنا المتميزة.",
@@ -346,7 +354,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
                 {accessories.map((p) => (
                   <ProductCard key={p.slug} product={p} />
                 ))}
@@ -356,33 +364,33 @@ const Home = () => {
         )}
 
         {/* Feature grid */}
-        <section className="max-w-7xl mx-auto px-4 py-24">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+        <section className="max-w-7xl mx-auto px-4 py-8 md:py-14 lg:py-24">
+          <div className="text-center max-w-2xl mx-auto mb-6 md:mb-10 lg:mb-16">
             <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
               {t({ en: "Why DESi", ar: "لماذا ديسي" })}
             </p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-black tracking-tight">
+            <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">
               {t({
                 en: "Everything your door has been missing",
                 ar: "كل ما ينقص بابك",
               })}
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 lg:gap-8">
             {featureHighlights.map((f, i) => {
               const Icon = iconMap[f.icon];
               return (
                 <div
                   key={i}
-                  className="group p-8 bg-white border border-neutral-100 rounded-2xl hover:border-[#E60012]/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  className="group p-4 md:p-6 lg:p-8 bg-white border border-neutral-100 rounded-2xl hover:border-[#E60012]/30 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-red-50 group-hover:bg-gradient-to-br group-hover:from-[#E60012] group-hover:to-[#ff4d5a] flex items-center justify-center transition-colors shadow-sm">
-                    <Icon className="w-6 h-6 text-[#E60012] group-hover:text-white transition-colors" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-xl bg-red-50 group-hover:bg-gradient-to-br group-hover:from-[#E60012] group-hover:to-[#ff4d5a] flex items-center justify-center transition-colors shadow-sm">
+                    <Icon className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#E60012] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="mt-6 text-xl font-bold tracking-tight">
+                  <h3 className="mt-4 md:mt-6 text-sm sm:text-base md:text-xl font-bold tracking-tight">
                     {t(f.title)}
                   </h3>
-                  <p className="mt-3 text-neutral-500 leading-relaxed font-medium">
+                  <p className="mt-2 md:mt-3 text-neutral-500 leading-relaxed font-medium text-xs sm:text-sm md:text-base">
                     {t(f.desc)}
                   </p>
                 </div>
@@ -392,19 +400,19 @@ const Home = () => {
         </section>
 
         {/* Live in action */}
-        <section className="bg-neutral-100 py-24">
+        <section className="bg-neutral-100 py-8 md:py-14 lg:py-24">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <div className="flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-8 items-start">
               {/* Left sidebar */}
-              <div className="lg:w-56 flex-shrink-0 flex flex-col gap-6">
+              <div className="lg:w-56 flex-shrink-0 flex flex-col gap-3 md:gap-4 lg:gap-6">
                 <div>
                   <p className="text-[#E60012] text-xs font-bold uppercase tracking-[0.2em]">
                     {t({ en: "Live in Action", ar: "لحظات حقيقية" })}
                   </p>
-                  <h2 className="mt-3 text-4xl font-black tracking-tight leading-tight">
+                  <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight">
                     {t({ en: "Smart Moments", ar: "لحظات ذكية" })}
                   </h2>
-                  <p className="mt-4 text-neutral-500 text-sm leading-relaxed">
+                  <p className="mt-4 text-neutral-500 text-xs sm:text-sm leading-relaxed">
                     {t({
                       en: "Real installations and quick guides in short clips.",
                       ar: "تركيبات حقيقية وأدلة سريعة في مقاطع قصيرة.",
@@ -508,15 +516,15 @@ const Home = () => {
 
         {/* CTA */}
         <section className="bg-[#E60012] text-white">
-          <div className="max-w-7xl mx-auto px-4 py-14 grid md:grid-cols-3 gap-8 items-center">
+          <div className="max-w-7xl mx-auto px-4 py-6 md:py-10 lg:py-14 grid md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-center">
             <div className="md:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-black">
+              <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black">
                 {t({
                   en: "Ready to upgrade your door?",
                   ar: "مستعد لتحديث بابك؟",
                 })}
               </h2>
-              <p className="mt-2 text-white/90">
+              <p className="mt-2 text-white/90 text-sm sm:text-base">
                 {t({
                   en: "Free delivery across UAE • 2-year warranty • 7-day returns.",
                   ar: "توصيل مجاني داخل الإمارات • ضمان سنتين • إرجاع خلال 7 أيام.",

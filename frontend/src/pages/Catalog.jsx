@@ -121,33 +121,33 @@ const Catalog = ({ category }) => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-10">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2 md:gap-4 mb-6 md:mb-8">
             <div>
-              <h1 className="text-3xl md:text-4xl font-black">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black">
                 {t(titles[category] || { en: "Catalog", ar: "المتجر" })}
               </h1>
-              <p className="mt-1.5 text-neutral-600">
+              <p className="mt-1 md:mt-1.5 text-neutral-600 text-xs md:text-sm">
                 {filtered.length}{" "}
                 {t({ en: "products available", ar: "منتجات متوفرة" })}
               </p>
             </div>
-            <div className="flex items-center gap-3 flex-wrap">
-              <label className="flex items-center gap-2 text-sm cursor-pointer select-none">
+            <div className="flex items-center gap-2 md:gap-3 flex-wrap">
+              <label className="flex items-center gap-2 text-xs md:text-sm cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={onlyNew}
                   onChange={(e) => setOnlyNew(e.target.checked)}
-                  className="w-4 h-4 accent-[#E60012]"
+                  className="w-3.5 h-3.5 md:w-4 md:h-4 accent-[#E60012]"
                 />
                 {t({ en: "New only", ar: "الجديد فقط" })}
               </label>
-              <div className="flex items-center gap-2 bg-white border border-neutral-200 rounded-md h-10 px-3">
-                <SlidersHorizontal className="w-4 h-4 text-neutral-500" />
+              <div className="flex items-center gap-2 bg-white border border-neutral-200 rounded-md h-8 md:h-10 px-2 md:px-3">
+                <SlidersHorizontal className="w-3 h-3 md:w-4 md:h-4 text-neutral-500" />
                 <select
                   value={sort}
                   onChange={(e) => setSort(e.target.value)}
-                  className="bg-transparent text-sm focus:outline-none"
+                  className="bg-transparent text-xs md:text-sm focus:outline-none"
                 >
                   <option value="default">
                     {t({ en: "Sort: Default", ar: "ترتيب: افتراضي" })}
@@ -173,7 +173,7 @@ const Catalog = ({ category }) => {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-6">
               {filtered.map((p) => (
                 <ProductCard key={p.slug} product={p} />
               ))}

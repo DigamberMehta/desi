@@ -201,19 +201,19 @@ const Header = () => {
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="absolute top-0 end-0 h-full w-full sm:w-80 sm:max-w-[85%] bg-white shadow-xl flex flex-col">
-            <div className="h-14 sm:h-16 flex items-center justify-between px-3 sm:px-5 border-b border-neutral-200">
+          <div className="absolute top-0 end-0 h-screen w-full sm:w-80 bg-white shadow-xl flex flex-col overflow-hidden">
+            <div className="h-14 sm:h-16 flex-shrink-0 flex items-center justify-between px-3 sm:px-5 border-b border-neutral-200">
               <span className="text-[#E60012] font-black text-xl sm:text-2xl">
                 DESi UAE
               </span>
               <button
                 onClick={() => setMobileOpen(false)}
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full hover:bg-neutral-100 flex items-center justify-center"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full hover:bg-neutral-100 flex items-center justify-center flex-shrink-0"
               >
                 <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
-            <nav className="flex-1 overflow-y-auto py-2 sm:py-4">
+            <nav className="flex-1 overflow-y-auto min-h-0">
               {[
                 ...nav,
                 { to: "/about", label: { en: "About Us", ar: "من نحن" } },
@@ -226,17 +226,17 @@ const Header = () => {
                   to={n.to}
                   onClick={() => setMobileOpen(false)}
                   className={({ isActive }) =>
-                    `block px-3 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-bold uppercase ${isActive ? "text-[#E60012] bg-red-50" : "text-neutral-800"} hover:bg-neutral-50 transition-colors`
+                    `block w-full px-3 sm:px-5 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase border-b border-neutral-100 ${isActive ? "text-[#E60012] bg-red-50" : "text-neutral-800"} hover:bg-neutral-50 transition-colors`
                   }
                 >
                   {t(n.label)}
                 </NavLink>
               ))}
             </nav>
-            <div className="border-t border-neutral-200 p-3 sm:p-5">
+            <div className="border-t border-neutral-200 p-3 sm:p-5 flex-shrink-0">
               <button
                 onClick={() => setLang(lang === "en" ? "ar" : "en")}
-                className="w-full h-9 sm:h-10 rounded-md bg-neutral-100 hover:bg-neutral-200 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-colors"
+                className="w-full h-10 sm:h-11 rounded-md bg-[#E60012] hover:bg-[#b8000e] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors uppercase tracking-wide"
               >
                 <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 {lang === "en" ? "العربية" : "English"}

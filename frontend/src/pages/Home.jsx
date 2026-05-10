@@ -130,9 +130,11 @@ const Home = () => {
                 s: { en: "No drilling required", ar: "بدون حفر" },
               },
               {
-                icon: ScanFace,
-                t: { en: "Face Recognition", ar: "تعرّف وجه" },
-                s: { en: "Hands-free entry", ar: "دخول بدون لمس" },
+                icon: null,
+                emoji: "🇹🇷",
+                t: { en: "Made in Turkey", ar: "صناعة تركية" },
+                s: { en: "Premium quality", ar: "جودة عالية" },
+                isEmoji: true,
               },
               {
                 icon: ShieldCheck,
@@ -142,18 +144,25 @@ const Home = () => {
               {
                 icon: Battery,
                 t: { en: "6-Month Battery", ar: "WPبطارية 6 أشهر" },
-                s: { en: "Type-C rechargeable", ar: "شحن Type-C" },
+                s: {
+                  en: "Type-C rechargeable \n (Power Saving Mode) ",
+                  ar: "شحن Type-C",
+                },
               },
             ].map((v, i) => (
               <div key={i} className="flex items-center gap-4 group">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
-                  <v.icon className="w-6 h-6 text-[#E60012]" />
+                  {v.isEmoji ? (
+                    <span className="text-2xl">{v.emoji}</span>
+                  ) : (
+                    <v.icon className="w-6 h-6 text-[#E60012]" />
+                  )}
                 </div>
                 <div>
                   <p className="font-bold text-[15px] tracking-wide">
                     {t(v.t)}
                   </p>
-                  <p className="text-[13px] text-neutral-400 font-medium mt-0.5">
+                  <p className="text-[13px] text-neutral-400 font-medium mt-0.5 whitespace-pre-line">
                     {t(v.s)}
                   </p>
                 </div>
@@ -183,9 +192,9 @@ const Home = () => {
                 desc: { en: "Multi-method entry", ar: "طرق دخول متعددة" },
               },
               {
-                icon: LucideIcons.Award,
-                title: { en: "Made in Turkey", ar: "صناعة تركية" },
-                desc: { en: "Premium quality", ar: "جودة عالية" },
+                icon: LucideIcons.ShieldCheck,
+                title: { en: "2 Year Warranty", ar: "ضمان سنتين" },
+                desc: { en: "Full coverage", ar: "تغطية كاملة" },
               },
             ].map((feature, i) => (
               <div key={i} className="flex items-center gap-4 group">

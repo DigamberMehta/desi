@@ -207,6 +207,73 @@ const Home = () => {
 
         {/* Value props strip */}
 
+        {/* Big feature — face recognition */}
+        <section className="bg-neutral-950 text-white overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#E60012]/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+          <div className="max-w-7xl mx-auto px-4 py-24 md:py-32 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
+                <Sparkles className="w-4 h-4 text-[#E60012]" />
+                <p className="text-white/80 text-[11px] font-bold uppercase tracking-[0.2em]">
+                  {t({ en: "Hands-Free Entry", ar: "دخول بدون لمس" })}
+                </p>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+                {t({ en: "Just push the door.", ar: "فقط ادفع الباب." })}
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E60012] to-[#ff4d5a]">
+                  {t({ en: "Your face is your key.", ar: "وجهك هو مفتاحك." })}
+                </span>
+              </h2>
+              <p className="mt-8 text-neutral-400 leading-relaxed text-lg max-w-lg">
+                {t({
+                  en: "Scan Face and Push the door AI face recognition Reader that unlocks your door before you even touch it — fast, secure, and protected with AES-256 GCM.",
+                  ar: "امسح وجهك وادفع الباب — قارئ التعرّف على الوجه بالذكاء الاصطناعي يفتح بابك قبل أن تلمسه، بسرعة وأمان، مع حماية بتشفير AES-256 GCM.",
+                })}
+              </p>
+              <ul className="mt-10 space-y-5">
+                {[
+                  {
+                    en: "Recognizes up to 37 faces with millisecond accuracy",
+                    ar: "يتعرّف على 37 وجهاً بدقة في الملي ثانية",
+                  },
+                  {
+                    en: "Anti-spoofing — photos and videos won't fool it",
+                    ar: "حماية من الخداع — لا تخدعه الصور أو الفيديو",
+                  },
+                  {
+                    en: "Falls back to PIN, fingerprint, app or physical key",
+                    ar: "خيارات بديلة: PIN ، بصمة ، تطبيق أو مفتاح",
+                  },
+                ].map((f, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <span className="flex items-center justify-center w-6 h-6 rounded-full bg-[#E60012]/20 text-[#E60012] mt-0.5">
+                      <Check className="w-3.5 h-3.5" />
+                    </span>
+                    <span className="text-neutral-300 font-medium text-base">
+                      {t(f)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/product/desi-utopic-rx-face-recognition">
+                <Button className="mt-12 h-14 px-8 bg-[#E60012] hover:bg-[#c4000f] text-white font-bold uppercase tracking-wider text-sm rounded-full shadow-lg shadow-red-900/20 transition-transform hover:-translate-y-1">
+                  {t({ en: "Shop Utopic RX", ar: "تسوّق يوتوبيك RX" })}
+                  <ArrowRight className="w-5 h-5 ms-2 rtl:rotate-180" />
+                </Button>
+              </Link>
+            </div>
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent z-10"></div>
+              <img
+                src="/VideoProject-ezgif.com-crop.gif"
+                alt="Face recognition"
+                className="w-[80%] h-[500px] rounded-2xl shadow-2xl relative z-0 transform transition-transform duration-700 group-hover:scale-105 border border-white/10"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Featured products - Smart Locks */}
         <section className="bg-neutral-50/50">
           <div className="max-w-7xl mx-auto px-4 py-24">

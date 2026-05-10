@@ -17,10 +17,7 @@ const Footer = () => {
           label: { en: "Smart Locks", ar: "الأقفال الذكية" },
         },
         { to: "/accessories", label: { en: "Accessories", ar: "الملحقات" } },
-        {
-          to: "/smart-locks",
-          label: { en: "Dubai, UAE Shop", ar: "متجر دبي الإمارات" },
-        },
+       
       ],
     },
     {

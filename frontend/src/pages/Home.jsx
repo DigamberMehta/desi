@@ -120,7 +120,7 @@ const Home = () => {
       <main>
         <HeroBanner />
 
-      <section className="bg-neutral-950 text-white relative overflow-hidden">
+        <section className="bg-neutral-950 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
           <div className="relative max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -162,38 +162,51 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Homes image strip */}
+        {/* Homes feature strip - Icons with text */}
         <section className="bg-black text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
-          <div className="relative max-w-7xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
-            <div
-              className="overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-sm"
-              style={{ width: "450px", height: "100px" }}
-            >
-              <img
-                src="/homes/s1.png"
-                alt="Homes image 1"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            {["s2.png","s4.png", "s3.png" ].map((file, i) => (
-              <div
-                key={i}
-                className="overflow-hidden"
-                style={{ width: "120px", height: "120px" }}
-              >
-                <img
-                  src={`/homes/${file}`}
-                  alt={`Homes image ${i + 2}`}
-                  className="w-full h-full object-contain"
-                />
+          <div className="relative max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: ScanFace,
+                title: { en: "Face Recognition", ar: "تعرّف الوجه" },
+                desc: { en: "Advanced biometric", ar: "بيومتري متقدم" },
+              },
+              {
+                icon: LucideIcons.Fingerprint,
+                title: { en: "Fingerprint", ar: "بصمة الإصبع" },
+                desc: { en: "Secure access", ar: "وصول آمن" },
+              },
+              {
+                icon: KeyRound,
+                title: { en: "PIN Code", ar: "رمز PIN" },
+                desc: { en: "Multi-method entry", ar: "طرق دخول متعددة" },
+              },
+              {
+                icon: LucideIcons.Award,
+                title: { en: "Made in Turkey", ar: "صناعة تركية" },
+                desc: { en: "Premium quality", ar: "جودة عالية" },
+              },
+            ].map((feature, i) => (
+              <div key={i} className="flex items-center gap-4 group">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
+                  <feature.icon className="w-6 h-6 text-[#E60012]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-[15px] tracking-wide">
+                    {t(feature.title)}
+                  </h3>
+                  <p className="text-[13px] text-neutral-400 font-medium mt-0.5">
+                    {t(feature.desc)}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
         {/* Value props strip */}
-  
+
         {/* Featured products - Smart Locks */}
         <section className="bg-neutral-50/50">
           <div className="max-w-7xl mx-auto px-4 py-24">

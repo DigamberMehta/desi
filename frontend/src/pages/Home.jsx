@@ -275,12 +275,12 @@ const Home = () => {
                 </Button>
               </Link>
             </div>
-            <div className="relative group hidden lg:block">
+            <div className="relative group block">
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent z-10"></div>
               <img
                 src="/VideoProject-ezgif.com-crop.gif"
                 alt="Face recognition"
-                className="w-[80%] h-[500px] rounded-2xl shadow-2xl relative z-0 transform transition-transform duration-700 group-hover:scale-105 border border-white/10"
+                className="w-[80%] h-[250px] sm:h-[350px] md:h-[500px] rounded-2xl shadow-2xl relative z-0 transform transition-transform duration-700 group-hover:scale-105 border border-white/10"
               />
             </div>
           </div>

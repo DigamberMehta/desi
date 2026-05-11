@@ -6,7 +6,7 @@ const HeroBanner = () => {
   const [idx, setIdx] = useState(0);
   const [heroSlides, setHeroSlides] = useState([]);
 
-  // Fetch banners
+  // Fetch banner images
   useEffect(() => {
     fetch(apiUrl("/api/settings"))
       .then((res) => res.json())
@@ -29,17 +29,45 @@ const HeroBanner = () => {
     return () => clearInterval(interval);
   }, [heroSlides]);
 
-  // Loading
+  // Loading state
   if (heroSlides.length === 0) {
     return (
-      <div className="h-[220px] sm:h-[320px] md:h-[560px] xl:h-[620px] bg-neutral-100 flex items-center justify-center">
+      <div
+        className="
+          w-full
+          bg-neutral-100
+          flex items-center justify-center
+
+          h-[220px]
+          sm:h-[320px]
+          md:h-[560px]
+
+          min-h-[220px]
+        "
+      >
         Loading...
       </div>
     );
   }
 
   return (
-    <section className="relative w-full overflow-hidden bg-black h-[160px] sm:h-[320px] md:h-[560px] xl:h-[620px]">
+    <section
+      className="
+        relative
+        w-full
+        overflow-hidden
+        bg-black
+
+        h-[220px]
+        sm:h-[320px]
+        md:h-[560px]
+
+        min-h-[220px]
+
+        2xl:h-[42vw]
+        2xl:max-h-[900px]
+      "
+    >
       {/* Slides */}
       {heroSlides.map((url, i) => (
         <div
@@ -50,7 +78,7 @@ const HeroBanner = () => {
               : "opacity-0 pointer-events-none z-0"
           }`}
         >
-          {/* Image */}
+          {/* Banner Image */}
           <img
             src={url}
             alt={`Banner ${i + 1}`}
@@ -58,9 +86,10 @@ const HeroBanner = () => {
             className="
               absolute inset-0
               w-full h-full
+
               object-contain
               sm:object-cover
-              xl:object-contain
+
               object-center
               select-none
             "
@@ -80,12 +109,23 @@ const HeroBanner = () => {
         }
         aria-label="Previous Slide"
         className="
-          absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20
-          w-8 h-8 md:w-10 md:h-10 lg:w-11 lg:h-11
+          absolute
+          left-2 md:left-4
+          top-1/2
+          -translate-y-1/2
+          z-20
+
+          w-8 h-8
+          md:w-10 md:h-10
+          lg:w-11 lg:h-11
+
           rounded-full
-          bg-black/20 hover:bg-black/50
+          bg-black/20
+          hover:bg-black/50
+
           backdrop-blur
           flex items-center justify-center
+
           text-white
           transition-all duration-200
         "
@@ -100,12 +140,23 @@ const HeroBanner = () => {
         }
         aria-label="Next Slide"
         className="
-          absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20
-          w-8 h-8 md:w-10 md:h-10 lg:w-11 lg:h-11
+          absolute
+          right-2 md:right-4
+          top-1/2
+          -translate-y-1/2
+          z-20
+
+          w-8 h-8
+          md:w-10 md:h-10
+          lg:w-11 lg:h-11
+
           rounded-full
-          bg-black/20 hover:bg-black/50
+          bg-black/20
+          hover:bg-black/50
+
           backdrop-blur
           flex items-center justify-center
+
           text-white
           transition-all duration-200
         "
@@ -113,11 +164,17 @@ const HeroBanner = () => {
         <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
       </button>
 
-      {/* Dots */}
+      {/* Pagination Dots */}
       <div
         className="
-          absolute bottom-3 md:bottom-6 left-1/2 -translate-x-1/2 z-20
-          flex items-center gap-1.5 md:gap-2
+          absolute
+          bottom-3 md:bottom-6
+          left-1/2
+          -translate-x-1/2
+          z-20
+
+          flex items-center
+          gap-1.5 md:gap-2
         "
       >
         {heroSlides.map((_, i) => (

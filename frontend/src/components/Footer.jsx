@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Share2, Star, Heart, Zap } from "lucide-react";
+import { Mail, Phone, MapPin, Share2, Heart, Zap } from "lucide-react";
 import { useLang } from "../contexts/LangContext";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -31,7 +31,14 @@ const Footer = () => {
           to: "/contact",
           label: { en: "Compatibility Check", ar: "فحص التوافق" },
         },
-        { to: "/contact", label: { en: "Warranty", ar: "الضمان" } },
+        {
+          to: "/privacy-security",
+          label: { en: "Privacy & Security", ar: "الخصوصية والأمان" },
+        },
+        {
+          to: "/returns-warranty",
+          label: { en: "Returns & Warranty", ar: "الإرجاع والضمان" },
+        },
       ],
     },
     {
@@ -134,7 +141,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="mt-5 flex items-center gap-3">
-            {[Share2, Star, Heart, Zap].map((Icon, i) => (
+            {[Share2, Heart, Zap].map((Icon, i) => (
               <a
                 key={i}
                 href="#"
@@ -164,26 +171,6 @@ const Footer = () => {
             </ul>
           </div>
         ))}
-      </div>
-
-      <div className="border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-neutral-500">
-          <p>
-            © {new Date().getFullYear()} DESi UAE.{" "}
-            {t({ en: "All rights reserved.", ar: "جميع الحقوق محفوظة." })}
-          </p>
-          <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white">
-              {t({ en: "Privacy Policy", ar: "سياسة الخصوصية" })}
-            </a>
-            <a href="#" className="hover:text-white">
-              {t({ en: "Terms of Service", ar: "الشروط" })}
-            </a>
-            <a href="#" className="hover:text-white">
-              {t({ en: "Shipping & Returns", ar: "الشحن والإرجاع" })}
-            </a>
-          </div>
-        </div>
       </div>
     </footer>
   );

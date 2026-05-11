@@ -10,7 +10,6 @@ import {
   Truck,
   ShieldCheck,
   RotateCcw,
-  Star,
 } from "lucide-react";
 import { useLang } from "../contexts/LangContext";
 import { useCart } from "../contexts/CartContext";
@@ -226,19 +225,6 @@ const ProductDetail = () => {
               <h2 className="text-3xl md:text-4xl font-black leading-[1.1] tracking-tight text-neutral-900">
                 {t(product.name)}
               </h2>
-              <div className="mt-3 flex items-center gap-3">
-                <div className="flex items-center gap-1 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-100">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star
-                      key={j}
-                      className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
-                    />
-                  ))}
-                  <span className="text-xs font-bold text-amber-700 ml-1">
-                    5.0
-                  </span>
-                </div>
-              </div>
 
               <div className="mt-6 flex items-baseline gap-3">
                 <span className="text-4xl font-black text-neutral-900 tracking-tighter">

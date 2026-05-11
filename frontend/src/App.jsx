@@ -17,6 +17,8 @@ import FAQ from "./pages/FAQ";
 import UserManuals from "./pages/UserManuals";
 import AppDownload from "./pages/AppDownload";
 import Cart from "./pages/Cart";
+import PrivacySecurity from "./pages/PrivacySecurity";
+import ReturnsWarranty from "./pages/ReturnsWarranty";
 import AdminApp from "./AdminApp";
 import { Toaster } from "./components/ui/toaster";
 import "./App.css";
@@ -67,6 +69,8 @@ const PublicApp = () => (
         <Route path="/app-download" element={<AppDownload />} />
         <Route path="/user-manuals" element={<UserManuals />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/privacy-security" element={<PrivacySecurity />} />
+        <Route path="/returns-warranty" element={<ReturnsWarranty />} />
       </Routes>
     </div>
     <Footer />

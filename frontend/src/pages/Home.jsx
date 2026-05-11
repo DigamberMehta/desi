@@ -9,7 +9,6 @@ import {
   Smartphone,
   Users,
   ShieldCheck,
-  Star,
   Sparkles,
   Check,
 } from "lucide-react";
@@ -47,7 +46,6 @@ const TESTIMONIALS = [
       en: "Installed in under 5 minutes. Face recognition is shockingly fast even at night.",
       ar: "تم التركيب في أقل من 5 دقائق. التعرّف على الوجه سريع جداً حتى ليلاً.",
     },
-    rating: 5,
   },
   {
     name: "Fatima Khan",
@@ -56,7 +54,6 @@ const TESTIMONIALS = [
       en: "My kids forget keys daily. Now they just walk up. Best home upgrade we've made.",
       ar: "كان أطفالي ينسون المفاتيح يومياً. الآن يدخلون بسهولة. أفضل ترقية للمنزل.",
     },
-    rating: 5,
   },
   {
     name: "James O'Brien",
@@ -65,7 +62,6 @@ const TESTIMONIALS = [
       en: "Airbnb host here — e-key sharing changed my workflow completely. No more lockboxes.",
       ar: "كمضيف Airbnb — مشاركة المفاتيح الإلكترونية غيّرت عملي تماماً.",
     },
-    rating: 5,
   },
   {
     name: "Maryam Saleh",
@@ -74,7 +70,6 @@ const TESTIMONIALS = [
       en: "No drilling needed. The 3M adhesive option saved my brand new fire door.",
       ar: "لا حاجة للحفر. اللاصق 3M أنقذ باب الحريق الجديد.",
     },
-    rating: 5,
   },
 ];
 

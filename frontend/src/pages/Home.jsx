@@ -117,7 +117,7 @@ const Home = () => {
 
         <section className="bg-neutral-950 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
-          <div className="relative max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8">
+          <div className="relative w-full mx-auto px-4 py-6 md:py-8 lg:py-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 md:gap-4 lg:gap-6">
             {[
               {
                 icon: Zap,
@@ -138,78 +138,47 @@ const Home = () => {
               },
               {
                 icon: Battery,
-                t: { en: "6-Month Battery", ar: "WPبطارية 6 أشهر" },
-                s: {
-                  en: "Type-C rechargeable \n (Power Saving Mode) ",
-                  ar: "شحن Type-C",
-                },
+                t: { en: "6-Month Battery", ar: "بطارية 6 أشهر" },
+                s: { en: "Type-C rechargeable", ar: "شحن Type-C" },
+              },
+              {
+                icon: ScanFace,
+                t: { en: "Face Recognition", ar: "تعرّف الوجه" },
+                s: { en: "Advanced biometric", ar: "بيومتري متقدم" },
+              },
+              {
+                icon: LucideIcons.Fingerprint,
+                t: { en: "Fingerprint", ar: "بصمة الإصبع" },
+                s: { en: "Secure access", ar: "وصول آمن" },
+              },
+              {
+                icon: KeyRound,
+                t: { en: "PIN Code", ar: "رمز PIN" },
+                s: { en: "Multi-method entry", ar: "طرق دخول متعددة" },
+              },
+              {
+                icon: LucideIcons.ShieldCheck,
+                t: { en: "2 Year Warranty", ar: "ضمان سنتين" },
+                s: { en: "Full coverage", ar: "تغطية كاملة" },
               },
             ].map((v, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 md:gap-3 lg:gap-4 group"
+                className="flex flex-col items-center gap-2 md:gap-3 group"
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
                   {v.isEmoji ? (
-                    <span className="text-lg md:text-xl lg:text-2xl">
-                      {v.emoji}
-                    </span>
+                    <span className="text-lg md:text-xl">{v.emoji}</span>
                   ) : (
-                    <v.icon className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#E60012]" />
+                    <v.icon className="w-4 h-4 md:w-5 md:h-5 text-[#E60012]" />
                   )}
                 </div>
-                <div>
-                  <p className="font-bold text-xs sm:text-[15px] tracking-wide">
+                <div className="text-center">
+                  <p className="font-bold text-xs sm:text-[13px] tracking-wide leading-tight">
                     {t(v.t)}
                   </p>
-                  <p className="text-[11px] sm:text-[13px] text-neutral-400 font-medium mt-0.5 whitespace-pre-line">
+                  <p className="text-[10px] sm:text-[11px] text-neutral-400 font-medium mt-0.5">
                     {t(v.s)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Homes feature strip - Icons with text */}
-        <section className="bg-black text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
-          <div className="relative max-w-7xl mx-auto px-4 py-6 md:py-8 lg:py-10 grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8">
-            {[
-              {
-                icon: ScanFace,
-                title: { en: "Face Recognition", ar: "تعرّف الوجه" },
-                desc: { en: "Advanced biometric", ar: "بيومتري متقدم" },
-              },
-              {
-                icon: LucideIcons.Fingerprint,
-                title: { en: "Fingerprint", ar: "بصمة الإصبع" },
-                desc: { en: "Secure access", ar: "وصول آمن" },
-              },
-              {
-                icon: KeyRound,
-                title: { en: "PIN Code", ar: "رمز PIN" },
-                desc: { en: "Multi-method entry", ar: "طرق دخول متعددة" },
-              },
-              {
-                icon: LucideIcons.ShieldCheck,
-                title: { en: "2 Year Warranty", ar: "ضمان سنتين" },
-                desc: { en: "Full coverage", ar: "تغطية كاملة" },
-              },
-            ].map((feature, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 md:gap-3 lg:gap-4 group"
-              >
-                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
-                  <feature.icon className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#E60012]" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-xs sm:text-[15px] tracking-wide">
-                    {t(feature.title)}
-                  </h3>
-                  <p className="text-[11px] sm:text-[13px] text-neutral-400 font-medium mt-0.5">
-                    {t(feature.desc)}
                   </p>
                 </div>
               </div>

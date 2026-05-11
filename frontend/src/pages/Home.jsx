@@ -115,8 +115,7 @@ const Home = () => {
       <main>
         <HeroBanner />
 
-        <section className="bg-neutral-950 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800/40 via-neutral-950/0 to-transparent"></div>
+        <section className="bg-white text-neutral-900 relative overflow-hidden">
           <div className="relative w-full mx-auto px-4 py-6 md:py-8 lg:py-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 md:gap-4 lg:gap-6">
             {[
               {
@@ -166,7 +165,7 @@ const Home = () => {
                 key={i}
                 className="flex flex-col items-center gap-2 md:gap-3 group"
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#E60012]/30 to-[#E60012]/5 flex items-center justify-center flex-shrink-0 border border-[#E60012]/20 transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white flex items-center justify-center flex-shrink-0 border-2 border-[#E60012] transition-transform group-hover:scale-110 group-hover:-rotate-3 duration-300">
                   {v.isEmoji ? (
                     <span className="text-lg md:text-xl">{v.emoji}</span>
                   ) : (
@@ -174,10 +173,10 @@ const Home = () => {
                   )}
                 </div>
                 <div className="text-center">
-                  <p className="font-bold text-xs sm:text-[13px] tracking-wide leading-tight">
+                  <p className="font-bold text-xs sm:text-[13px] tracking-wide leading-tight text-[#E60012]">
                     {t(v.t)}
                   </p>
-                  <p className="text-[10px] sm:text-[11px] text-neutral-400 font-medium mt-0.5">
+                  <p className="text-[10px] sm:text-[11px] text-neutral-600 font-medium mt-0.5">
                     {t(v.s)}
                   </p>
                 </div>

@@ -119,10 +119,10 @@ const Footer = () => {
             <div className="flex items-start gap-3 text-neutral-400 hover:text-white transition-colors group cursor-default">
               <MapPin className="w-4 h-4 mt-0.5 text-[#E60012] group-hover:scale-110 transition-transform" />
               <span>
-                {t({
-                  en: "Sheikh Zayed Road, Dubai, UAE",
-                  ar: "شارع الشيخ زايد، دبي، الإمارات",
-                })}
+              {t({
+                en: "Dubai, UAE",
+                ar: "دبي، الإمارات",
+              })}
               </span>
             </div>
             <a
@@ -140,17 +140,7 @@ const Footer = () => {
               info@desilocks.com
             </a>
           </div>
-          <div className="mt-5 flex items-center gap-3">
-            {[Share2, Heart, Zap].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-9 h-9 rounded-full bg-neutral-900 hover:bg-[#E60012] flex items-center justify-center transition-colors"
-              >
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
-          </div>
+ 
         </div>
         {cols.map((c) => (
           <div key={c.title.en}>

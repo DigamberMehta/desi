@@ -104,7 +104,11 @@ const ProductDetail = () => {
   const INSTALL_GIF =
     "https://shop.desi.com.tr/Data/EditorFiles/rxgifmontajna.gif";
   const heroImg =
-    product.category === "smart-locks" ? INSTALL_GIF : product.image;
+    product.slug === "desi-quic-v002"
+      ? "https://endesi.tsoftstatic.com/Data/EditorFiles/v002.png"
+      : product.category === "smart-locks"
+        ? INSTALL_GIF
+        : product.image;
   const heroName = t(product.name).replace(/^DESi\s+/i, "");
   const heroSeriesLabel =
     {
@@ -363,7 +367,7 @@ const ProductDetail = () => {
                 <img
                   src={heroImg}
                   alt={t(product.name)}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
               </div>
             </div>
@@ -512,10 +516,16 @@ const ProductDetail = () => {
                   </div>
                 );
 
+                const sectionImageSrc =
+                  product.slug === "desi-quic-v002" &&
+                  (t(section.heading) || "").toLowerCase().includes("peephole")
+                    ? "/product/IMG_6179.gif"
+                    : section.image;
+
                 const imageBlock = (
                   <div className="flex items-center justify-center">
                     <img
-                      src={section.image}
+                      src={sectionImageSrc}
                       alt={t(section.heading) || ""}
                       className="w-full max-w-lg rounded-2xl"
                       loading="lazy"

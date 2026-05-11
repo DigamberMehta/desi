@@ -41,8 +41,10 @@ const HeroBanner = () => {
           h-[160px]
           sm:h-[280px]
           md:h-[460px]
+          lg:h-[520px]
 
-          min-h-[220px]
+          min-h-[180px]
+          max-h-[70vh]
         "
       >
         Loading...
@@ -61,11 +63,11 @@ const HeroBanner = () => {
           h-[160px]
           sm:h-[240px]
           md:h-[480px]
+          lg:h-[520px]
+          xl:h-[560px]
 
-          min-h-[220px]
-
-        2xl:h-[42vw]
-        2xl:max-h-[900px]
+          min-h-[180px]
+          max-h-[70vh]
       "
     >
       {/* Slides */}
@@ -73,9 +75,7 @@ const HeroBanner = () => {
         <div
           key={i}
           className={`absolute inset-0 transition-opacity duration-700 ${
-            i === idx
-              ? "opacity-100 z-10"
-              : "opacity-0 pointer-events-none z-0"
+            i === idx ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
           }`}
         >
           {/* Banner Image */}
@@ -103,9 +103,7 @@ const HeroBanner = () => {
       {/* Previous Button */}
       <button
         onClick={() =>
-          setIdx(
-            (prev) => (prev - 1 + heroSlides.length) % heroSlides.length
-          )
+          setIdx((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
         }
         aria-label="Previous Slide"
         className="
@@ -135,9 +133,7 @@ const HeroBanner = () => {
 
       {/* Next Button */}
       <button
-        onClick={() =>
-          setIdx((prev) => (prev + 1) % heroSlides.length)
-        }
+        onClick={() => setIdx((prev) => (prev + 1) % heroSlides.length)}
         aria-label="Next Slide"
         className="
           absolute

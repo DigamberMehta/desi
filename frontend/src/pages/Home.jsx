@@ -120,7 +120,7 @@ const Home = () => {
             {[
               {
                 icon: Zap,
-                t: { en: "3-Min Install", ar: "تركيب في 3 دقائق" },
+                t: { en: "3 min DIY installation*", ar: "تركيب في 3 دقائق" },
                 s: { en: "No drilling required", ar: "بدون حفر" },
               },
               {

@@ -126,11 +126,11 @@ const Footer = () => {
               +971 4 200 0000
             </a>
             <a
-              href="mailto:info@desi.ae"
+              href="mailto:info@desilocks.com"
               className="flex items-center gap-2 hover:text-white transition-colors"
             >
               <Mail className="w-4 h-4 text-[#E60012]" />
-              info@desi.ae
+              info@desilocks.com
             </a>
           </div>
           <div className="mt-5 flex items-center gap-3">

@@ -82,7 +82,7 @@ const Contact = () => {
               {
                 icon: Mail,
                 t: { en: "Email us", ar: "البريد الإلكتروني" },
-                d: { en: "info@desi.ae", ar: "info@desi.ae" },
+                d: { en: "info@desilocks.com", ar: "info@desilocks.com" },
               },
               {
                 icon: MessageCircle,

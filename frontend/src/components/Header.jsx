@@ -44,12 +44,12 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 h-8 sm:h-9 flex items-center justify-between gap-2 sm:gap-5">
           <div className="flex items-center gap-2 sm:gap-5 min-w-0">
             <a
-              href="mailto:info@desi.ae"
+              href="mailto:info@desilocks.com"
               className="flex items-center gap-1 sm:gap-2 hover:text-[#E60012] transition-colors truncate"
             >
               <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-              <span className="hidden sm:inline">info@desi.ae</span>
-              <span className="sm:hidden">info@desi.ae</span>
+              <span className="hidden sm:inline">info@desilocks.com</span>
+              <span className="sm:hidden">info@desilocks.com</span>
             </a>
             <a
               href="tel:+97142000000"

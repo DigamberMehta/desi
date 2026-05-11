@@ -38,9 +38,9 @@ const HeroBanner = () => {
           bg-neutral-100
           flex items-center justify-center
 
-          h-[220px]
-          sm:h-[320px]
-          md:h-[560px]
+          h-[160px]
+          sm:h-[280px]
+          md:h-[460px]
 
           min-h-[220px]
         "
@@ -58,11 +58,11 @@ const HeroBanner = () => {
         overflow-hidden
         bg-black
 
-        h-[220px]
-        sm:h-[320px]
-        md:h-[560px]
+          h-[160px]
+          sm:h-[240px]
+          md:h-[480px]
 
-        min-h-[220px]
+          min-h-[220px]
 
         2xl:h-[42vw]
         2xl:max-h-[900px]

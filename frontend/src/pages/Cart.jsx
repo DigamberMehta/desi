@@ -31,7 +31,7 @@ const Cart = () => {
     removeCoupon,
     clear,
   } = useCart();
-  const [whatsappNumber, setWhatsappNumber] = useState("971500000000");
+  const [whatsappNumber, setWhatsappNumber] = useState("971526187729");
   const [couponCode, setCouponCode] = useState("");
   const [validatingCoupon, setValidatingCoupon] = useState(false);
 

@@ -128,7 +128,7 @@ const AdminSettings = ({ token }) => {
                 id="whatsapp"
                 name="whatsappNumber"
                 type="text"
-                placeholder="+971500000000"
+                placeholder="+971526187729"
                 value={formData.whatsappNumber}
                 onChange={handleChange}
                 className="ps-10 font-mono text-lg"

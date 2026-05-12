@@ -17,7 +17,7 @@ const Contact = () => {
     phone: "",
     message: "",
   });
-  const [whatsappNumber, setWhatsappNumber] = useState("+971 50 000 0000");
+  const [whatsappNumber, setWhatsappNumber] = useState("+971526187729");
 
   useEffect(() => {
     fetch(apiUrl("/api/settings"))
@@ -77,7 +77,7 @@ const Contact = () => {
               {
                 icon: Phone,
                 t: { en: "Call us", ar: "اتصل بنا" },
-                d: { en: "+971 4 200 0000", ar: "+971 4 200 0000" },
+                d: { en: "+971526187729", ar: "+971526187729" },
               },
               {
                 icon: Mail,

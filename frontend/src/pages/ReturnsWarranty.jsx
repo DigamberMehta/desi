@@ -628,8 +628,8 @@ const ReturnsWarranty = () => {
                 {t({ en: "Phone", ar: "الهاتف" })}
               </span>{" "}
               &nbsp;{" "}
-              <a href="tel:+97142000000" className="hover:underline">
-                +971 4 200 0000
+              <a href="tel:+971526187729" className="hover:underline">
+                +971526187729
               </a>
             </p>
             <p>

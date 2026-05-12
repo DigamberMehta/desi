@@ -119,18 +119,18 @@ const Footer = () => {
             <div className="flex items-start gap-3 text-neutral-400 hover:text-white transition-colors group cursor-default">
               <MapPin className="w-4 h-4 mt-0.5 text-[#E60012] group-hover:scale-110 transition-transform" />
               <span>
-              {t({
-                en: "Dubai, UAE",
-                ar: "دبي، الإمارات",
-              })}
+                {t({
+                  en: "Dubai, UAE",
+                  ar: "دبي، الإمارات",
+                })}
               </span>
             </div>
             <a
-              href="tel:+97142000000"
+              href="tel:+971526187729"
               className="flex items-center gap-2 hover:text-white transition-colors"
             >
               <Phone className="w-4 h-4 text-[#E60012]" />
-              +971 4 200 0000
+              +971526187729
             </a>
             <a
               href="mailto:info@desilocks.com"
@@ -140,7 +140,6 @@ const Footer = () => {
               info@desilocks.com
             </a>
           </div>
- 
         </div>
         {cols.map((c) => (
           <div key={c.title.en}>

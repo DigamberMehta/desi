@@ -4,7 +4,7 @@ const settingsSchema = new mongoose.Schema(
   {
     whatsappNumber: {
       type: String,
-      default: "+971500000000",
+      default: "+971526187729",
     },
     bannerUrls: {
       type: [String],

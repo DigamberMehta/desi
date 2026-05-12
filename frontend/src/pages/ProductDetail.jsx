@@ -41,7 +41,7 @@ const ProductDetail = () => {
   const [active, setActive] = useState(0);
   const [color, setColor] = useState("Black");
   const [qty, setQty] = useState(1);
-  const [whatsappNumber, setWhatsappNumber] = useState("971500000000");
+  const [whatsappNumber, setWhatsappNumber] = useState("971526187729");
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {

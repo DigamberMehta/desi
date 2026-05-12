@@ -52,10 +52,10 @@ const Header = () => {
               <span className="sm:hidden">info@desilocks.com</span>
             </a>
             <a
-              href="tel:+97142000000"
+              href="tel:+971526187729"
               className="hidden sm:flex items-center gap-2 hover:text-[#E60012] transition-colors"
             >
-              <Phone className="w-3.5 h-3.5" /> +971 4 200 0000
+              <Phone className="w-3.5 h-3.5" /> +971526187729
             </a>
           </div>
           <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">

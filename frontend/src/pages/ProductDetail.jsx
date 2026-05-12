@@ -189,15 +189,15 @@ const ProductDetail = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 py-10 md:py-16">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
             {/* Gallery */}
             <div className="flex flex-col gap-4">
-              <div className="relative aspect-square rounded-3xl flex items-center justify-center p-1 overflow-hidden group">
+              <div className="relative aspect-square rounded-3xl flex items-center justify-center p-1 overflow-hidden group bg-white">
                 <div className="absolute inset-0 mix-blend-overlay opacity-20 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-neutral-200 via-transparent to-transparent pointer-events-none"></div>
                 <img
                   src={gallery[active]}
                   alt={t(product.name)}
-                  className="relative z-10 w-full h-full object-contain c group-hover:scale-105"
+                  className="relative z-10 w-full h-full object-contain block group-hover:scale-105"
                 />
               </div>
               {gallery.length > 1 && (
@@ -211,7 +211,7 @@ const ProductDetail = () => {
                       <img
                         src={g}
                         alt={`view ${i + 1}`}
-                        className="w-full h-full object-contain drop-shadow-sm"
+                        className="w-full h-full object-contain drop-shadow-sm block"
                       />
                     </button>
                   ))}
@@ -323,8 +323,8 @@ const ProductDetail = () => {
 
         {/* ── HERO BANNER ──────────────────────────────────── */}
         <div className="px-4 md:px-8">
-          <div className="bg-[#0e0e0e] rounded-2xl overflow-hidden min-h-[220px] md:h-[430px]">
-            <div className="grid md:grid-cols-[55%_45%] h-full">
+          <div className="bg-[#0e0e0e] rounded-2xl overflow-hidden min-h-[280px] md:min-h-[220px] md:h-[430px]">
+            <div className="grid grid-cols-1 md:grid-cols-[55%_45%] h-full gap-4 md:gap-0">
               {/* Left */}
               <div className="flex flex-col justify-center px-6 md:px-14 py-8 md:py-10 h-full">
                 <div className="flex items-center gap-3 mb-4 md:mb-5">
@@ -363,11 +363,11 @@ const ProductDetail = () => {
                 )}
               </div>
               {/* Right: installation gif / hero image */}
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden w-full h-[200px] md:h-auto flex items-center justify-center">
                 <img
                   src={heroImg}
                   alt={t(product.name)}
-                  className="absolute inset-0 w-full h-full object-contain"
+                  className="w-full h-full object-contain block"
                 />
               </div>
             </div>
@@ -430,7 +430,7 @@ const ProductDetail = () => {
                       <img
                         src={section.image}
                         alt=""
-                        className="w-full rounded-2xl"
+                        className="w-full h-auto rounded-2xl block"
                         loading="lazy"
                       />
                     </div>
@@ -469,7 +469,7 @@ const ProductDetail = () => {
                         <img
                           src={section.image}
                           alt={t(section.heading) || ""}
-                          className="w-full rounded-2xl"
+                          className="w-full h-auto rounded-2xl block"
                           loading="lazy"
                         />
                       )}
@@ -523,11 +523,11 @@ const ProductDetail = () => {
                     : section.image;
 
                 const imageBlock = (
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center justify-center w-full">
                     <img
                       src={sectionImageSrc}
                       alt={t(section.heading) || ""}
-                      className="w-full max-w-lg rounded-2xl"
+                      className="w-full h-auto rounded-2xl block md:max-w-lg"
                       loading="lazy"
                     />
                   </div>
@@ -535,7 +535,7 @@ const ProductDetail = () => {
 
                 return (
                   <div key={idx} className="border-t border-neutral-100 py-16">
-                    <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
                       {section.type === "text-image" ? (
                         <>
                           {textBlock}
